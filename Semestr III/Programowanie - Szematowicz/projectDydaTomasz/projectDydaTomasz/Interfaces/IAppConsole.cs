@@ -7,5 +7,7 @@
         void Clear();
 
         string ReadLine();
+
+        void WriteLine(object msg);
     }
 }

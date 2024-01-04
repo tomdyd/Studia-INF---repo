@@ -10,11 +10,9 @@ namespace projectDydaTomasz
     {
         public void MainMenu()
         {
-            Console.WriteLine("1. Dodaj użytkownika");
-            Console.WriteLine("2. Dodaj test");
-            Console.WriteLine("3. Wczytaj użytkowników");
-            Console.WriteLine("4. Wczytaj test");
-            Console.WriteLine("5. Wyjdź");
+            Console.WriteLine("1. Połącz z MongoDb");
+            Console.WriteLine("2. Połącz z sql");
+            Console.WriteLine("3. Wyjdź");
         }
     }
 }

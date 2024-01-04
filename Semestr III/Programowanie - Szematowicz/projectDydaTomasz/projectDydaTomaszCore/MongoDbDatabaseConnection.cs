@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 
@@ -8,11 +9,7 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
     private IMongoDatabase _database;
     private string _collectionName;
 
-    //public MongoDbDatabaseConnection(string connectionString, string databaseName)
-    //{
-    //    _mongoClient = new MongoClient(connectionString);
-    //    _database = _mongoClient.GetDatabase(databaseName);
-    //}
+    private T[] _users;
 
     public void Connect(string connectionString, string databaseName, string collectionName)
     {
@@ -62,12 +59,11 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
             Console.WriteLine($"Błąd podczas dodawania do bazy danych MongoDB: {ex.Message}");
         }
     }
-    public List<T> ReadFromDb()
+    public T[] GetUsers()
     {
-
         var collection = GetCollection(_collectionName);
         var result = collection.Find(_ => true);
-        return result.ToList();
+        _users = result.ToList().ToArray();
+        return _users;
     }
-
 }

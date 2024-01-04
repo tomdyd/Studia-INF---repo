@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ATdgtUSPuvhZyB1sLJUfAH0EDhjHeMqkM8i97PirJAyApLcpu5+/cDYLdgQ7OO2T2r83+8Y5Nqr/7muA+xjOYw==",
+  "dgSpecHash": "ZKzh8qPaPz8JmL8Vo0Mbq6S1/40URP8xpcf7wxHY/MFQDjY2Iml0Xb169VjdSlrGREeh6L8MQ+igTuv/2vvWIw==",
   "success": true,
-  "projectFilePath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
+  "projectFilePath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tomek\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Tomek\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

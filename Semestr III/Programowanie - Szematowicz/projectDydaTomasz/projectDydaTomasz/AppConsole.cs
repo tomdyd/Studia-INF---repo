@@ -28,5 +28,9 @@ namespace projectDydaTomasz
         {
             return Console.ReadLine();
         }
+        public void WriteLine(object msg)
+        {
+            Console.WriteLine(msg);
+        }
     }
 }

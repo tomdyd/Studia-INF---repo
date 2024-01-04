@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj": {}
+    "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj": {}
   },
   "projects": {
-    "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj": {
+    "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
+        "projectUniqueName": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
         "projectName": "projectDydaTomaszCore",
-        "projectPath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
+        "projectPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj",
         "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
-        "outputPath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\obj\\",
+        "outputPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj": {
+    "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj",
+        "projectUniqueName": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj",
         "projectName": "projectDydaTomasz",
-        "projectPath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj",
+        "projectPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\projectDydaTomasz.csproj",
         "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
-        "outputPath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\obj\\",
+        "outputPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomasz\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj": {
-                "projectPath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj"
+              "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj": {
+                "projectPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\projectDydaTomasz\\projectDydaTomaszCore\\projectDydaTomaszCore.csproj"
               }
             }
           }

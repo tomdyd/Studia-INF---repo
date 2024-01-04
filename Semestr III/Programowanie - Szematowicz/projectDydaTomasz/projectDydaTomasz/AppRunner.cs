@@ -1,7 +1,9 @@
 ﻿using MongoDB.Driver.Core.Authentication;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore;
+using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using projectDydaTomaszCore.Services;
 
 namespace projectDydaTomasz
 {
@@ -9,11 +11,19 @@ namespace projectDydaTomasz
     {
         private readonly IMenu _menu;
         private readonly IAppConsole _console;
+        private readonly IDataService<User> _userService;
+        private readonly IDataService<test> _testService;
+        private readonly IDatabaseConnection<User> _userMongoClient;
+        private readonly IDatabaseConnection<test> _testMongoClient;
 
-        public AppRunner(IMenu menu, IAppConsole console)
+        public AppRunner(IMenu menu, IAppConsole console, IDataService<User> userService, IDataService<test> testService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<test> testMongoClient)
         {
             _menu = menu;
             _console = console;
+            _userService = userService;
+            _testService = testService;
+            _userMongoClient = userMongoClient;
+            _testMongoClient = testMongoClient;
         }
 
         public void StartApp()
@@ -27,68 +37,45 @@ namespace projectDydaTomasz
                 switch (res)
                 {
                     case 1:
-                        User newUser = new User
-                        {
-                            Username = "testUser",
-                            PasswordHash = "testPassword",
-                            Email = "testEmail"
-                        };
+                        _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
+                        ShowAllUsers();
 
-                        var MongoDbDatabase = new MongoDbDatabaseConnection<User>();
-                        MongoDbDatabase.Connect("mongodb://localhost:27017", "test", "user");
-                        MongoDbDatabase.AddToDb(newUser);
-                        _console.ReadLine();
+                        Console.ReadLine();
                         break;
                     case 2:
-                        test newTest = new test
-                        {
-                            MyNum = 1,
-                            Name = "Tomek",
-                        };
-
-                        var MongoDbDatabaseTest = new MongoDbDatabaseConnection<test>();
-                        MongoDbDatabaseTest.Connect("mongodb://localhost:27017", "test", "test");
-                        MongoDbDatabaseTest.AddToDb(newTest);
-
-                        _console.ReadLine();
+                        _testMongoClient.Connect("mongodb://localhost:27017/", "test", "test");
+                        ShowAllTests();
                         break;
                     case 3:
-                        MongoDbDatabase = new MongoDbDatabaseConnection<User>();
-                        MongoDbDatabase.Connect("mongodb://localhost:27017", "test", "user");
-                        var result = MongoDbDatabase.ReadFromDb();
-
-                        foreach (User user in result)
-                        {
-                            Console.WriteLine(user);
-                            Console.WriteLine();
-                        }
-                        Console.ReadLine();
-
-                        break;
-
-                    case 4:
-                        MongoDbDatabaseTest = new MongoDbDatabaseConnection<test>();
-                        MongoDbDatabaseTest.Connect("mongodb://localhost:27017", "test", "test");
-                        var result1 = MongoDbDatabaseTest.ReadFromDb();
-
-                        foreach (test test in result1)
-                        {
-                            Console.WriteLine(test);
-                            Console.WriteLine();
-                        }
-                        Console.ReadLine();
-                        break;
-
-                    case 5:
-
+                        
                         return;
-
+                    
                     default:
-                        Console.WriteLine("Nie ma takiej opcji");
+                        _console.WriteLine("Nie ma takiej opcji");
                         _console.ReadLine();
                         break;
                 }
             }
+        }
+
+        private void ShowAllUsers()
+        {
+            var users = _userService.GetAllData();
+            foreach (var item in users)
+            {
+                Console.WriteLine(item);
+            }
+            _console.ReadLine();
+        }
+
+        private void ShowAllTests()
+        {
+            var tests = _testService.GetAllData();
+            foreach (var item in tests)
+            {
+                Console.WriteLine(item);
+            }
+            _console.ReadLine();
         }
     }
 }
