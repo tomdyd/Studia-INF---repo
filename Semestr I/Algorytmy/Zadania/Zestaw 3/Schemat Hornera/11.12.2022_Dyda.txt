@@ -1,0 +1,38 @@
+using System.Threading.Channels;
+
+Console.Write("Podaj stopień wielomianu: ");
+bool czyLiczba = int.TryParse(Console.ReadLine(), out int n);
+while(!czyLiczba || n <= 0)
+{
+    Console.Write("Podana wartość musi być liczbą większą od 0: ");
+    czyLiczba = int.TryParse(Console.ReadLine(), out  n);
+}
+
+int[] a = new int[n+1];
+for (int i = 0; i <= n; i++)
+{
+    Console.Write($"Podaj współcznnik a{i} wielomianu: ");
+    czyLiczba = int.TryParse(Console.ReadLine(), out a[i]);
+    while (!czyLiczba)
+    {
+        Console.Write("Podana wartość musi być liczbą: ");
+        czyLiczba = int.TryParse(Console.ReadLine(), out a[i]);
+    }
+}
+
+Console.Write("Podaj wartość x: ");
+czyLiczba = int.TryParse(Console.ReadLine(), out int x);
+while (!czyLiczba)
+{
+    Console.Write("Podana wartość musi być liczbą: ");
+    czyLiczba = int.TryParse(Console.ReadLine(), out x);
+}
+
+int w = a[0];
+for (int i = 0; i < n; i++)
+{
+    w = w * x + a[i + 1];
+}
+
+Console.Write($"Wynik wielomianu dla x = {x} wynosi: {w}");
+Console.ReadKey();

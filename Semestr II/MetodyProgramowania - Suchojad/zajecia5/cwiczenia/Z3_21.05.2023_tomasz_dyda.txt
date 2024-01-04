@@ -1,0 +1,57 @@
+Console.Write("Enter perimeter of rectangle (side walls have to be integers numbers): ");
+bool isNumber = int.TryParse(Console.ReadLine(), out int perimeter);
+while (!isNumber)
+{
+    Console.Clear();
+    Console.Write("Enter perimeter of rectangle: ");
+    isNumber = int.TryParse(Console.ReadLine(), out perimeter);
+}
+
+double a = (double)perimeter/4;
+int b = 0;
+
+// Prostokąt może istnieć tylko wtedy, gdy obwód / 4 = 0 lub x.5 (gdzie x to dowolna liczba)
+if (a % (int)a != 0 && a %(int)a != 0.5)
+{
+    Console.WriteLine("The rectangle with the given perimeter does not exist.");
+    System.Environment.Exit(0);
+}
+
+// Jeśli a jest liczbą ułamkową to po wykonaniu operacji mod przez (int)a (liczba skrócona o część ułamkową)
+// da wynik różny od 0.
+if (a % (int)a != 0)
+{
+    a = (int)a;
+    // Jesli a jest liczbą skróconą o część ułamkową to do długości drugiego boku trzeba dodać 1
+    b = (int)a + 1;
+}
+else
+{
+    b = (int)a;
+}
+
+int surfaceArea = (int)a * b;
+
+Console.Clear();
+
+if (surfaceArea > 0)
+{
+    if (a == b)
+    {
+        Console.WriteLine($"Rectangle with the largest surface area in this case is a square:");
+        Console.WriteLine("Side lenght: a = {0}", a);
+        Console.WriteLine("Perimeter: " + perimeter);
+        Console.WriteLine("Surface area: " + surfaceArea);
+    }
+    else
+    {
+        Console.WriteLine($"Rectangle with the largest surface area:");
+        Console.WriteLine("Side lenghts: a = {0}, b = {1}", a, b);
+        Console.WriteLine("Perimeter: " + (2*a + 2*b));
+        Console.WriteLine("Surface area: " + surfaceArea);
+    }
+}
+else
+{
+    Console.WriteLine("The rectangle with the given perimeter does not exist.");
+}

@@ -1,0 +1,38 @@
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.exe
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.deps.json
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.runtimeconfig.json
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.pdb
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\System.CodeDom.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\System.Management.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.AssemblyReference.cache
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.AssemblyInfoInputs.cache
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.AssemblyInfo.cs
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.CoreCompileInputs.cache
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.CopyComplete
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\refint\usbEventDetector.dll
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.pdb
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.genruntimeconfig.cache
+D:\Dane\Studia INF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\ref\usbEventDetector.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.exe
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.deps.json
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.runtimeconfig.json
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\usbEventDetector.pdb
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\System.CodeDom.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\System.Management.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.AssemblyReference.cache
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.AssemblyInfoInputs.cache
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.AssemblyInfo.cs
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.CoreCompileInputs.cache
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.csproj.CopyComplete
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\refint\usbEventDetector.dll
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.pdb
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\usbEventDetector.genruntimeconfig.cache
+D:\Dane\Dane\StudiaINF\Semestr III\Programowanie - Szematowicz\usbEventDetector\usbEventDetector\obj\Debug\net6.0\ref\usbEventDetector.dll

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8xhxbOktiir5BL5E5vnZ00UTwAGg6PLdEHDPQPJ1oKoPHHIqIStj+GdRfkOi0n5UiYY7m8RuDfwHt0yBpaWATA==",
+  "success": true,
+  "projectFilePath": "D:\\Dane\\Studia INF\\Semestr III\\Programowanie - Szematowicz\\usbEventDetector\\usbEventDetector\\usbEventDetector.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tomek\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Tomek\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

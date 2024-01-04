@@ -1,0 +1,15 @@
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\bin\Debug\net6.0\ConsoleApp2.exe
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\bin\Debug\net6.0\ConsoleApp2.deps.json
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\bin\Debug\net6.0\ConsoleApp2.runtimeconfig.json
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\bin\Debug\net6.0\ConsoleApp2.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\bin\Debug\net6.0\ConsoleApp2.pdb
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.csproj.AssemblyReference.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.AssemblyInfoInputs.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.AssemblyInfo.cs
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.csproj.CoreCompileInputs.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\refint\ConsoleApp2.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.pdb
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ConsoleApp2.genruntimeconfig.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia5\cwiczenia\Z3_22.05.2023_tomasz_dyda\ConsoleApp2\obj\Debug\net6.0\ref\ConsoleApp2.dll

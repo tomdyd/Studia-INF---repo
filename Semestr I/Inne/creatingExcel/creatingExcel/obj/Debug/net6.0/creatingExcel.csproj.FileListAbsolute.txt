@@ -1,0 +1,7 @@
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.csproj.AssemblyReference.cache
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.csproj.ResolveComReference.cache
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.AssemblyInfoInputs.cache
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.AssemblyInfo.cs
+C:\Users\Tomek\Desktop\C#\creatingExcel\creatingExcel\obj\Debug\net6.0\creatingExcel.csproj.CoreCompileInputs.cache

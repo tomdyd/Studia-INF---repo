@@ -1,0 +1,221 @@
+﻿using System.Runtime.CompilerServices;
+namespace program
+{
+    class Z4_21_05_2023_tomasz_dyda
+    {
+        static void Main(string[] args)
+        {
+            InfoPanel();
+            Console.ResetColor();
+
+            Console.Write("\nEnter minimum value of sits: ");
+            bool isNumber = int.TryParse(Console.ReadLine(), out int minStudents);
+            while(!isNumber)
+            {
+                Console.Clear();
+                InfoPanel();
+                Console.Write("Enter minimum value of sits: ");
+                isNumber = int.TryParse(Console.ReadLine(), out minStudents);
+            }
+
+            Console.Write("Enter maximum value of sits: ");
+            isNumber = int.TryParse(Console.ReadLine(), out int maxStudents);
+            while (!isNumber)
+            {
+                Console.Clear();
+                InfoPanel();
+                Console.Write("Enter maximum value of sits: ");
+                isNumber = int.TryParse(Console.ReadLine(), out minStudents);
+            }
+
+
+            // Aby dodawać nieograniczoną ilość autobusów metoda GetOptimum() musi zostać przerobiona
+            // (aktualnie obsługuje RÓWNO 3 autobusy)
+            List<Bus> busVariants = new List<Bus>();
+            for(int i = 0; i < 3; i++)
+            {
+                Console.Clear();
+                InfoPanel();
+                Console.Write($"\nEnter cost of {i+1} bus: ");
+                isNumber = int.TryParse(Console.ReadLine(), out int cost);
+                while(!isNumber)
+                {
+                    Console.Clear();
+                    InfoPanel();
+                    Console.Write($"\nEnter cost of {i+1} bus: ");
+                    isNumber = int.TryParse(Console.ReadLine(), out cost);
+                }
+
+                Console.Write("Enter number of sits in this bus: ");
+                isNumber = int.TryParse(Console.ReadLine(), out int numberOfSits);
+                while (!isNumber)
+                {
+                    Console.Clear();
+                    InfoPanel();
+                    Console.Write("\nEnter number of sits in this bus: ");
+                    Console.Write("\nEnter number of sits in this bus: ");
+                    isNumber = int.TryParse(Console.ReadLine(), out numberOfSits);
+                }
+
+                busVariants.Add(new Bus(cost, numberOfSits));
+            }
+
+
+            int[] numberOfBuses = GetOptimum(maxStudents, minStudents, busVariants);
+            Console.Clear();
+            InfoPanel();
+            Console.WriteLine("\nThere will be need: ");
+            Console.WriteLine($"{numberOfBuses[0]} bus/es with {busVariants[0]._numberOfSits} sits, cost = {numberOfBuses[0] * 300}");
+            Console.WriteLine($"{numberOfBuses[1]} bus/es with {busVariants[1]._numberOfSits} sits, cost = {numberOfBuses[1] * 550}");
+            Console.WriteLine($"{numberOfBuses[2]} bus/es with {busVariants[2]._numberOfSits} sits, cost = {numberOfBuses[2] * 900}");
+            Console.WriteLine($"Total sits = {numberOfBuses[0] * 9 + numberOfBuses[1] * 18 + numberOfBuses[2] * 32}");
+            Console.WriteLine($"Total cost: {numberOfBuses[0] * 300 + numberOfBuses[1] * 550 + numberOfBuses[2] * 900}");
+            Console.WriteLine();
+            Console.WriteLine("______  _________    ___   _______ \r\n ||  |\\/|__[__  /    |  \\_/|  \\__| \r\n ||__|  |  |__]/__   |__/| |__/  | \r\n                                   ");
+
+        }
+        static int[] GetOptimum(int maxStudents, int minStudents, List<Bus> busVariants)
+        {
+            // tablica z ilością miejsc w poszczególnych autobusach: 0 - 9miejsc, 1 - 18miejsc, 2 - 32miejsca
+            int[] busSits =
+            {
+                busVariants[0]._numberOfSits,
+                busVariants[1]._numberOfSits,
+                busVariants[2]._numberOfSits
+            };
+            // Początkowa ilość zarezerwowanych miejsc
+            int sits = 0;
+            // Zmienna pomocnicza do pętli 2
+            int sits1;
+            // Zmienna pomocnicza do pętli 3
+            int sits2;
+            // Zmienne pomocnicze do sterowania pętlami
+            bool control = false;
+            bool control1 = false;
+            // Tablica obecnie sprawdzanych wariantów układów autobusów
+            int[] buses = new int[3];
+            // Tablica najbardziej korzystnego układu autobusów
+            int[] vehicles = new int[3];
+            // Zmienna pomocnicza, zapamiętuje najmniejszy koszt układu autobusów spełniających zadane warunki
+            // na początku ustawiona na wysoką wartość (potrzebne do pierwszego porównania - nie może być
+            // mniejsza niż pierwszy obliczony koszt)
+            int tmp = int.MaxValue;
+            // Początkowy koszt
+            int cost = 0;
+            // Zmienna pomocnicza do pętli 2
+            int cost1;
+            // Zmienna pomocnicza do pętli 3
+            int cost2;
+
+            for (int i = 0;  sits < minStudents && control == false; i++)
+            {
+                // Jeśli to pierwsza iteracja, pomiń sumowanie miejsc z autobusu 1
+                if (i != 0)
+                {
+                    // Przywrócenie domyślnych ustawień zmiennych control
+                    control = false;
+                    control1 = false;
+                    // Zapamiętanie liczby miejsc zsumowanych z autobusu 1
+                    cost = (i - 1) * busVariants[0]._cost;
+
+                    // Jeśli ilość miejsc jest mniejsza od max, wykonaj:
+                    if (sits + busSits[0] < maxStudents)
+                    {
+                        sits += busSits[0];
+                        buses[0] += 1;
+                        cost += busVariants[0]._cost;
+                    }
+                    // Jeśli ilość miejsc jest większa/równa max przejdź do następnej pętli
+                    else
+                    {
+                        control = true;
+                    }
+                }
+                // Przekazanie zarezerwowanej obecnie ilości miejsc do następnej zmiennej
+                sits1 = sits;
+                // Zresetowanie ilości autobusów o ilości miejsc 18 (aby nie duplikować wyników)
+                buses[1] = 0;
+                // Przekazanie obecnych kosztów do następnej zmiennej
+                cost1 = cost;
+                for(int j = 0; sits1 <= minStudents && control1 == false; j++)
+                {
+                    control1 = false;
+                    // Jeśli to pierwsza iteracja, pomiń sumowanie miejsc z autobusu 2
+                    if (j != 0)
+                    {
+                        // Jeśli ilość miejsc jest mniejsza od max, wykonaj:
+                        if (sits1 + busSits[1] < maxStudents)
+                        {
+                            sits1 += busSits[1];
+                            buses[1] += 1;
+                            cost1 += busVariants[1]._cost;
+                        }
+                        // Jeśli ilość miejsc jest większa/równa max przejdź do następnej pętli
+                        else
+                        {
+                            control1 = true;
+                        }
+                    }
+                    // Przekazanie zarezerwowanej obecnie ilości miejsc do następnej zmiennej
+                    sits2 = sits1;
+                    // Zresetowanie ilości autobusów o ilości miejsc 32 (aby nie duplikować wyników)
+                    buses[2] = 0;
+                    // Przekazanie obecnych kosztów do następnej zmiennej
+                    cost2 = cost1;
+
+                    // Najpierw wykonaj, potem sprawdź warunek ilość zarezerwowanych miejsc mniejsza/równa min
+                    do
+                    {
+                        // Jeśli ilość miejsc jest mniejsza/równa od max, wykonaj:
+                        if (sits2 + busSits[2] <= maxStudents)
+                        {
+                            sits2 += busSits[2];
+                            buses[2] += 1;
+                            cost2 += busVariants[2]._cost;
+                        }
+                        // Jeśli ilość miejsc jest mniejsza od min - 1 i koszt obecny jest mniejszy niż
+                        // najniższy dotychczasowy koszt, wykonaj:
+                        if (sits2 > minStudents - 1 && cost2 < tmp)
+                        {
+                            // Skopiowanie tablicy ilości poszczególnych autobusów do tablicy zwracanej
+                            // przez metode
+                            Array.Copy(buses, vehicles, vehicles.Length);
+                            // Zapisanie kosztu obecnego, jako najniższy dotychczas znaleziony
+                            tmp = cost2;
+                        }
+
+                        // Jeśli ilość miejsc jest większa niż max, wykonaj:
+                        if (sits2 + busSits[2] > maxStudents)
+                        {
+                            break;
+                        }
+                    }while (sits2 <= minStudents);
+                }
+            }
+            // Zwracany najbardziej korzystny układ autobusów
+            return vehicles;
+        }
+        static void InfoPanel()
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("This program calculates the optimal solution for different configurations " +
+                "(varying seating capacities) of three buses, based on the provided minimum number of seats, " +
+                "maximum number of seats, and transportation costs for each bus. It searches for the cheapest " +
+                "solution within the given range. [Version 0.1]");
+            Console.ResetColor();
+        }
+    }
+
+    class Bus
+    {
+        public int _cost;
+        public int _numberOfSits;
+
+        public Bus(int cost, int numberOfSits)
+        {
+            _cost = cost;
+            _numberOfSits = numberOfSits;
+        }
+    }
+}

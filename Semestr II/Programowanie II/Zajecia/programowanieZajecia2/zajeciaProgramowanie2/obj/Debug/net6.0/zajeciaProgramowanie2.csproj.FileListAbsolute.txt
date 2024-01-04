@@ -1,0 +1,15 @@
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\bin\Debug\net6.0\zajeciaProgramowanie2.exe
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\bin\Debug\net6.0\zajeciaProgramowanie2.deps.json
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\bin\Debug\net6.0\zajeciaProgramowanie2.runtimeconfig.json
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\bin\Debug\net6.0\zajeciaProgramowanie2.dll
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\bin\Debug\net6.0\zajeciaProgramowanie2.pdb
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.csproj.AssemblyReference.cache
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.AssemblyInfoInputs.cache
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.AssemblyInfo.cs
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.csproj.CoreCompileInputs.cache
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.dll
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\refint\zajeciaProgramowanie2.dll
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.pdb
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\zajeciaProgramowanie2.genruntimeconfig.cache
+C:\Users\Tomek\Documents\masterFolder\zajeciaProgramowanie2\zajeciaProgramowanie2\obj\Debug\net6.0\ref\zajeciaProgramowanie2.dll

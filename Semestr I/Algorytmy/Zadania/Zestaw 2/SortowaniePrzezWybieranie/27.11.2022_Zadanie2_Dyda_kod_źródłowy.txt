@@ -1,0 +1,47 @@
+
+using System.Globalization;
+
+Console.Write("Podaj liczbę elementów zbioru: ");
+bool isNumber = int.TryParse(Console.ReadLine(), out int userInput);
+
+while(!isNumber || userInput <= 0)
+{
+    Console.WriteLine("Podaj liczbę dodatnią: ");
+    isNumber = int.TryParse(Console.ReadLine(), out userInput);
+}
+
+int[] T = new int[userInput];
+
+for (int i = 0; i < userInput; i++)
+{
+    Console.Write($"Podaj {i+1} element zbioru: ");
+
+    isNumber = int.TryParse(Console.ReadLine(), out T[i]);
+
+    while (!isNumber)
+    {
+        Console.WriteLine("Podaj liczbę: ");
+        isNumber = int.TryParse(Console.ReadLine(), out T[i]);
+    }
+}
+
+for (int i = 0; i < T.Length; i++)
+{
+    int temp = T[i];
+
+    for (int j = i+1; j < T.Length; j++)
+    {
+        if (T[j] < temp)
+        {
+            T[i] = T[j];
+            T[j] = temp;
+            temp = T[i];
+        }
+    }
+}
+
+
+for (int i = 0; i < T.Length; i++)
+{
+    Console.WriteLine(T[i]);
+}

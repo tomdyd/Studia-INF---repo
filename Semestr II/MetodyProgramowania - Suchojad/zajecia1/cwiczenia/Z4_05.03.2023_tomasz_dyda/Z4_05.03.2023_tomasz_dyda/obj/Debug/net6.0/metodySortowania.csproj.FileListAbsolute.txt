@@ -1,0 +1,15 @@
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\bin\Debug\net6.0\metodySortowania.exe
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\bin\Debug\net6.0\metodySortowania.deps.json
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\bin\Debug\net6.0\metodySortowania.runtimeconfig.json
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\bin\Debug\net6.0\metodySortowania.dll
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\bin\Debug\net6.0\metodySortowania.pdb
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.csproj.AssemblyReference.cache
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.AssemblyInfoInputs.cache
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.AssemblyInfo.cs
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.csproj.CoreCompileInputs.cache
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.dll
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\refint\metodySortowania.dll
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.pdb
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\metodySortowania.genruntimeconfig.cache
+C:\Users\Tomek\Documents\masterFolder\metodySortowania\metodySortowania\obj\Debug\net6.0\ref\metodySortowania.dll

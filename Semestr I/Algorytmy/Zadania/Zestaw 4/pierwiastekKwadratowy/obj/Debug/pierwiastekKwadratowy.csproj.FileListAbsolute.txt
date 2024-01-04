@@ -1,0 +1,8 @@
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\bin\Debug\pierwiastekKwadratowy.exe.config
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\bin\Debug\pierwiastekKwadratowy.exe
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\bin\Debug\pierwiastekKwadratowy.pdb
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\obj\Debug\pierwiastekKwadratowy.csproj.AssemblyReference.cache
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\obj\Debug\pierwiastekKwadratowy.csproj.SuggestedBindingRedirects.cache
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\obj\Debug\pierwiastekKwadratowy.csproj.CoreCompileInputs.cache
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\obj\Debug\pierwiastekKwadratowy.exe
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\pierwiastekKwadratowy\obj\Debug\pierwiastekKwadratowy.pdb

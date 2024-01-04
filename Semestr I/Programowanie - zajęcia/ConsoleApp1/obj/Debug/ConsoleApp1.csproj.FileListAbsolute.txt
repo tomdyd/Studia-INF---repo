@@ -1,0 +1,3 @@
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.SuggestedBindingRedirects.cache
+D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache

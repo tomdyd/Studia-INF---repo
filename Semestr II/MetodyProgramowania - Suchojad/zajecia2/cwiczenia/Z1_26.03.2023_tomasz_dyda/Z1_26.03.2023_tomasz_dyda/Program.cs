@@ -1,0 +1,107 @@
+﻿using System;
+using System.Diagnostics;
+
+class Program
+{
+    static void Main()
+    {
+        int[] inputArray = GenerateSortedArray(10000000); // Generowanie posortowanej tablicy z 1 000 000 elementów
+
+        Stopwatch stopwatch = new Stopwatch();
+
+        // Algorytm binarny
+        stopwatch.Start();
+        int binarySearchIndex = BinarySearch(inputArray, 42);
+        stopwatch.Stop();
+        TimeSpan binarySearchTime = stopwatch.Elapsed;
+
+        stopwatch.Reset();
+
+        // Algorytm umieszczania interpolacyjnego
+        stopwatch.Start();
+        int interpolationSearchIndex = InterpolationSearch(inputArray, 42);
+        stopwatch.Stop();
+        TimeSpan interpolationSearchTime = stopwatch.Elapsed;
+
+        Console.WriteLine("Algorytm binarny:");
+        Console.WriteLine("Indeks znalezionego elementu: " + binarySearchIndex);
+        Console.WriteLine("Czas wykonania: " + binarySearchTime);
+
+        Console.WriteLine();
+
+        Console.WriteLine("Algorytm umieszczania interpolacyjnego:");
+        Console.WriteLine("Indeks znalezionego elementu: " + interpolationSearchIndex);
+        Console.WriteLine("Czas wykonania: " + interpolationSearchTime);
+    }
+
+    static int BinarySearch(int[] arr, int target)
+    {
+        int left = 0;
+        int right = arr.Length - 1;
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target)
+            {
+                return mid;
+            }
+            else if (arr[mid] < target)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+
+        return -1; // Element nie został znaleziony
+    }
+
+    static int InterpolationSearch(int[] arr, int target)
+    {
+        int left = 0;
+        int right = arr.Length - 1;
+
+        while (left <= right && target >= arr[left] && target <= arr[right])
+        {
+            if (left == right)
+            {
+                if (arr[left] == target)
+                {
+                    return left;
+                }
+                return -1; // Element nie został znaleziony
+            }
+
+            int position = left + ((target - arr[left]) * (right - left)) / (arr[right] - arr[left]);
+
+            if (arr[position] == target)
+            {
+                return position;
+            }
+            else if (arr[position] < target)
+            {
+                left = position + 1;
+            }
+            else
+            {
+                right = position - 1;
+            }
+        }
+
+        return -1; // Element nie został znaleziony
+    }
+
+    static int[] GenerateSortedArray(int size)
+    {
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++)
+        {
+            arr[i] = i + 1;
+        }
+        return arr;
+    }
+}

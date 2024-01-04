@@ -1,0 +1,15 @@
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\bin\Debug\net6.0\16.exe
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\bin\Debug\net6.0\16.deps.json
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\bin\Debug\net6.0\16.runtimeconfig.json
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\bin\Debug\net6.0\16.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\bin\Debug\net6.0\16.pdb
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.csproj.AssemblyReference.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.AssemblyInfoInputs.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.AssemblyInfo.cs
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.csproj.CoreCompileInputs.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\refint\16.dll
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.pdb
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\16.genruntimeconfig.cache
+D:\Dane\Studia INF\Semestr II\MetodyProgramowania - Suchojad\zajecia3\Ćwiczenia\Z3_16.04.2023_tomasz_Dyda\16\obj\Debug\net6.0\ref\16.dll

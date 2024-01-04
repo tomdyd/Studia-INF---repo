@@ -1,0 +1,32 @@
+﻿Console.Write("Podaj liczbę dla której chcesz znaleźć liczby względnie pierwsze z zakresu od 2 do 1000: ");
+Console.WriteLine();
+int userInput = int.Parse(Console.ReadLine());
+int j = 0;
+
+
+Console.WriteLine($"Liczby względnie pierwsze z {userInput} w przedziale <2; 1000>\n");
+for (int i = 2; i < 1001; i++)
+{
+    if(AreRelativelyPrime(userInput, i))
+    {
+        Console.Write($"|{i}| ");
+        j++;
+
+        if (j == 20)
+        {
+            Console.WriteLine("\n");
+            j = 0;
+        }
+    }   
+}
+bool AreRelativelyPrime(int a, int b)
+{
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    return a == 1;
+}
