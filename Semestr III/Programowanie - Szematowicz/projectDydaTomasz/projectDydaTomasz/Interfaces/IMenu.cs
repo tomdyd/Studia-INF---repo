@@ -2,6 +2,6 @@
 {
     public interface IMenu
     {
-        void MainMenu();
+        void MenuM();
     }
 }

@@ -1,6 +1,4 @@
-﻿using MongoDB.Driver.Core.Authentication;
-using projectDydaTomasz.Interfaces;
-using projectDydaTomaszCore;
+﻿using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 using projectDydaTomaszCore.Services;
@@ -12,11 +10,11 @@ namespace projectDydaTomasz
         private readonly IMenu _menu;
         private readonly IAppConsole _console;
         private readonly IDataService<User> _userService;
-        private readonly IDataService<test> _testService;
+        private readonly IDataService<Test> _testService;
         private readonly IDatabaseConnection<User> _userMongoClient;
-        private readonly IDatabaseConnection<test> _testMongoClient;
+        private readonly IDatabaseConnection<Test> _testMongoClient;
 
-        public AppRunner(IMenu menu, IAppConsole console, IDataService<User> userService, IDataService<test> testService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<test> testMongoClient)
+        public AppRunner(IMenu menu, IAppConsole console, IDataService<User> userService, IDataService<Test> testService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<Test> testMongoClient)
         {
             _menu = menu;
             _console = console;
@@ -31,7 +29,7 @@ namespace projectDydaTomasz
             while (true)
             {
                 _console.Clear();
-                _menu.MainMenu();
+                _menu.MenuM();
                 var res = _console.GetResponseFromUser();
 
                 switch (res)
@@ -47,7 +45,7 @@ namespace projectDydaTomasz
                         ShowAllTests();
                         break;
                     case 3:
-                        
+
                         return;
                     
                     default:

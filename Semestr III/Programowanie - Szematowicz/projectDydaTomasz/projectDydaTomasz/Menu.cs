@@ -8,7 +8,7 @@ namespace projectDydaTomasz
 {
     public class Menu : IMenu
     {
-        public void MainMenu()
+        public void MenuM()
         {
             Console.WriteLine("1. Połącz z MongoDb");
             Console.WriteLine("2. Połącz z sql");

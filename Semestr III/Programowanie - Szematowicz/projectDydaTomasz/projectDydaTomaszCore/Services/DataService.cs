@@ -1,5 +1,4 @@
 ﻿using projectDydaTomaszCore.Interfaces;
-using projectDydaTomaszCore.Models;
 
 namespace projectDydaTomaszCore.Services
 {
