@@ -9,7 +9,7 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
     private IMongoDatabase _database;
     private string _collectionName;
 
-    private T[] _users;
+    private List<T> _users;
 
     public void Connect(string connectionString, string databaseName, string collectionName)
     {
@@ -59,11 +59,11 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
             Console.WriteLine($"Błąd podczas dodawania do bazy danych MongoDB: {ex.Message}");
         }
     }
-    public T[] GetUsers()
+    public List<T> GetData()
     {
         var collection = GetCollection(_collectionName);
         var result = collection.Find(_ => true);
-        _users = result.ToList().ToArray();
+        _users = result.ToList();
         return _users;
     }
 }

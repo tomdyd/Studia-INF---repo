@@ -19,6 +19,17 @@ namespace projectDydaTomasz
             }
         }
 
+        public string GetLoginFromUser()
+        {
+            var response = Console.ReadLine();
+            return response;
+        }
+        public string GetPasswordFromUser()
+        {
+            var response = Console.ReadLine();
+            return response;
+        }
+
         public void Clear()
         {
             Console.Clear();
@@ -31,6 +42,11 @@ namespace projectDydaTomasz
         public void WriteLine(object msg)
         {
             Console.WriteLine(msg);
+        }
+
+        public void Write(object msg)
+        {
+            Console.Write(msg);
         }
     }
 }

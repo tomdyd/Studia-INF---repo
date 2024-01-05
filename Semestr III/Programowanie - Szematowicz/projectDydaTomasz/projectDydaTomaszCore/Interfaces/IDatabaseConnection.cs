@@ -10,7 +10,7 @@ namespace projectDydaTomaszCore.Interfaces
         public void Disconnect(); // Metoda do zamykania połączenia z bazą danych.
         public IMongoCollection<T> GetCollection(string collectionName);
         public void AddToDb(T input);
-        T[] GetUsers();
+        public List<T> GetData();
 
         // Dodaj inne metody związane z operacjami bazodanowymi, jeśli to konieczne.
     }

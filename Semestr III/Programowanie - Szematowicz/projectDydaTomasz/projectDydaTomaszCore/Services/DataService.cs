@@ -1,4 +1,5 @@
 ﻿using projectDydaTomaszCore.Interfaces;
+using projectDydaTomaszCore.Models;
 
 namespace projectDydaTomaszCore.Services
 {
@@ -11,9 +12,9 @@ namespace projectDydaTomaszCore.Services
             _userRepository = userService;
         }
 
-        public T[] GetAllData()
+        public List<T> GetAllData()
         {
-            var users = _userRepository.GetUsers();
+            var users = _userRepository.GetData();
             return users;
         }
     }

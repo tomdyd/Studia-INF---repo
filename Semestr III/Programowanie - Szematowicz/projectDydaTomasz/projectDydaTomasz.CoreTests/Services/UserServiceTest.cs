@@ -14,8 +14,8 @@ namespace projectDydaTomasz.CoreTestes.Services
         {
             // Arrange
             var mockDatabaseConnection = new Mock<IDatabaseConnection<User>>();
-            var testData = new User[] {};
-            mockDatabaseConnection.Setup(x => x.GetUsers()).Returns(testData);
+            var testData = new List<User>();
+            mockDatabaseConnection.Setup(x => x.GetData()).Returns(testData);
 
             var dataService = new DataService<User>(mockDatabaseConnection.Object);
 

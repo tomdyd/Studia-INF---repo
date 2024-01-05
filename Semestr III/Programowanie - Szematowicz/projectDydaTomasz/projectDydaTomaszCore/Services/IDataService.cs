@@ -9,6 +9,6 @@ namespace projectDydaTomaszCore.Services
 {
     public interface IDataService<T>
     {
-        public T[] GetAllData();
+        public List<T> GetAllData();
     }
 }
