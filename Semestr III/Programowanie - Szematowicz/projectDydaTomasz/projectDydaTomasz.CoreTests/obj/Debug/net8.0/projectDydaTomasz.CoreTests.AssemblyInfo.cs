@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projectDydaTomasz.CoreTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b43d53fba48a4a5b904bbb66233d7be0bd830b05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd45f5da6b358b9da22f40ccc8314ddfd217809c")]
 [assembly: System.Reflection.AssemblyProductAttribute("projectDydaTomasz.CoreTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projectDydaTomasz.CoreTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

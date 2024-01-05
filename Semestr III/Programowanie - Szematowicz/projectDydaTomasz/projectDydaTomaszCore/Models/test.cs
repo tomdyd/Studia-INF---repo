@@ -13,7 +13,7 @@ namespace projectDydaTomaszCore.Models
 
         public override string ToString()
         {
-            return $"ID: {Id}\nMyNum: {MyNum}\nName:{Name}";
+            return $"ID: {Id}\nMyNum: {MyNum}\nName: {Name}";
         }
     }
 }
