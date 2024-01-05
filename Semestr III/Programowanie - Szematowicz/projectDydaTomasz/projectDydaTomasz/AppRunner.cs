@@ -1,4 +1,5 @@
-﻿using projectDydaTomasz.Interfaces;
+﻿using projectDydaTomasz.Core.Models;
+using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 using projectDydaTomaszCore.Services;
@@ -9,19 +10,17 @@ namespace projectDydaTomasz
     {
         private readonly IMenu _menu;
         private readonly IAppConsole _console;
-        private readonly IDataService<User> _userService;
-        private readonly IDataService<Test> _testService;
+        private readonly IUserService _userService;
         private readonly IDatabaseConnection<User> _userMongoClient;
-        private readonly IDatabaseConnection<Test> _testMongoClient;
+        private readonly IDatabaseConnection<Car> _carMongoClient;
 
-        public AppRunner(IMenu menu, IAppConsole console, IDataService<User> userService, IDataService<Test> testService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<Test> testMongoClient)
+        public AppRunner(IMenu menu, IAppConsole console, IUserService userService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<Car> carMongoClient)
         {
             _menu = menu;
             _console = console;
             _userService = userService;
-            _testService = testService;
             _userMongoClient = userMongoClient;
-            _testMongoClient = testMongoClient;
+            _carMongoClient = carMongoClient;
         }
 
         public void StartApp()
@@ -29,7 +28,7 @@ namespace projectDydaTomasz
             while (true)
             {
                 _console.Clear();
-                _menu.MenuM();
+                _menu.MainMenu();
                 var res = _console.GetResponseFromUser();
 
                 switch (res)
@@ -37,10 +36,10 @@ namespace projectDydaTomasz
                     case 1:
                         _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
                         var login = _console.GetLoginFromUser();
-                        var password =_console.GetPasswordFromUser();
+                        var password = _console.GetPasswordFromUser();
                         var loggedUser = CheckUser(login, password);
 
-                        if(loggedUser != null)
+                        if (loggedUser != null)
                         {
                             _console.WriteLine("Zalogowano poprawnie!");
                         }
@@ -48,17 +47,33 @@ namespace projectDydaTomasz
                         {
                             _console.WriteLine("Niepoprawne dane!");
                         }
+                        _console.ReadLine();
 
-                        Console.ReadLine();
+                        _console.Clear();
+                        _menu.mongoCollectionsMenu();
+                        res = _console.GetResponseFromUser();
+
+                        switch (res)
+                        {
+                            case 1:
+                                _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+
                         break;
+
                     case 2:
-                        _testMongoClient.Connect("mongodb://localhost:27017/", "test", "test");
-                        ShowAllTests();
+                        _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
+                        //ShowAllUsers("test1");
                         break;
                     case 3:
 
                         return;
-                    
+
                     default:
                         _console.WriteLine("Nie ma takiej opcji");
                         _console.ReadLine();
@@ -67,39 +82,17 @@ namespace projectDydaTomasz
             }
         }
 
-        private void ShowAllUsers()
-        {
-            var users = _userService.GetAllData();
-            foreach (var item in users)
-            {
-                Console.WriteLine(item);
-            }
-            _console.ReadLine();
-        }
-
-        private void ShowAllTests()
-        {
-            var tests = _testService.GetAllData();
-            foreach (var item in tests)
-            {
-                Console.WriteLine(item);
-            }
-            _console.ReadLine();
-        }
+        //private void ShowAllUsers(string username)
+        //{
+        //    var user = _userService.GetUser(username);
+        //    Console.WriteLine(username);
+        //    Console.WriteLine();
+        //    _console.ReadLine();
+        //}
 
         private User CheckUser(string username, string password)
         {
-            User loggedUser = null;
-
-            var usersList = _userService.GetAllData();
-            foreach (var item in usersList)
-            {         
-                if (item.Username == username && item.PasswordHash == password)
-                {
-                    loggedUser = item;
-                    return loggedUser;
-                }
-            }
+            User loggedUser = _userService.GetUser(username, password);
             return loggedUser;
         }
     }

@@ -2,6 +2,8 @@
 {
     public interface IMenu
     {
-        void MenuM();
+        void MainMenu();
+
+        void mongoCollectionsMenu();
     }
 }

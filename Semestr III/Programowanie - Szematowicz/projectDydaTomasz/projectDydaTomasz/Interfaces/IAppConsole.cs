@@ -5,6 +5,7 @@
         int GetResponseFromUser();
 
         string GetLoginFromUser();
+
         string GetPasswordFromUser();
 
         void Clear();

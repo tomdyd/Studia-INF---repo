@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace projectDydaTomaszCore.Services
 {
-    public interface IDataService<T>
+    public interface IUserService
     {
-        public List<T> GetAllData();
+        public User GetUser(string username, string password);
     }
 }

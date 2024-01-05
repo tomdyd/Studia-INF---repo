@@ -21,11 +21,13 @@ namespace projectDydaTomasz
 
         public string GetLoginFromUser()
         {
+            Console.Write("Podaj login: ");
             var response = Console.ReadLine();
             return response;
         }
         public string GetPasswordFromUser()
         {
+            Console.Write("Podaj hasło: ");
             var response = Console.ReadLine();
             return response;
         }
