@@ -10,5 +10,6 @@ namespace projectDydaTomasz.Core.Interfaces
     public interface IUserService
     {
         public User AuthorizeUser(string username, string password);
+        public void RegisterUser(User newUser);
     }
 }

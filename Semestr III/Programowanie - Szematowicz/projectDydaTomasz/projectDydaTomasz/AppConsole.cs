@@ -37,8 +37,7 @@ namespace projectDydaTomasz
         public string GetPasswordFromUser()
         {
             var password = new StringBuilder();
-            do
-            {
+
                 Console.Write("Podaj hasło: ");
                 while (true)
                 {
@@ -62,18 +61,7 @@ namespace projectDydaTomasz
                         Console.Write("*");
                     }
                 }
-                if (string.IsNullOrEmpty(password.ToString()))
-                {
-                    Console.Clear();
-                    Console.WriteLine("Password can not be empty! Try again: ");
-                }
-            } while (string.IsNullOrEmpty(password.ToString()));
-
             return password.ToString();
-
-            Console.Write("Podaj hasło: ");
-            var response = Console.ReadLine();
-            return response;
         }
 
         public void Clear()

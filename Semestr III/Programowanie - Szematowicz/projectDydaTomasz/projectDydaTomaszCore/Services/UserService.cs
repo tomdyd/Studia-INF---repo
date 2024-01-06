@@ -37,5 +37,44 @@ namespace projectDydaTomaszCore.Services
             Console.ReadLine();
             return null;
         }
+
+        public void RegisterUser(User newUser)
+        {
+            var userCollection = _userRepository.GetAllDataList();
+            var loginExists = userCollection.Find(x => x.username ==  newUser.username);
+
+            if (newUser != null && loginExists == null)
+            {
+                if(newUser.username != "" && newUser.passwordHash != "" && newUser.email != "")
+                {
+                    var registerUser = new User()
+                    {
+                        username = newUser.username,
+                        passwordHash = newUser.passwordHash,
+                        email = newUser.email
+                    };
+
+                    _userRepository.AddToDb(registerUser);
+                    Console.WriteLine("Rejestracja przebiegła pomyślnie!");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Należy wypełnić wszystkie pola!");
+                    Console.ReadLine();
+                }
+
+            }
+            else if(loginExists != null)
+            {
+                Console.WriteLine("Podany login już istnieje");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Użytkownik nie może być nullem");
+                Console.ReadLine();
+            }
+        }
     }
 }

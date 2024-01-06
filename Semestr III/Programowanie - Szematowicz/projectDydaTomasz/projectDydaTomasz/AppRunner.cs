@@ -212,6 +212,15 @@ namespace projectDydaTomasz
                                     break;
 
                                 case 2:
+                                    var newUser = new User()
+                                    {
+                                        username = _console.GetDataFromUser("Podaj login: "),
+                                        passwordHash = _console.GetPasswordFromUser(),
+                                        email = _console.GetDataFromUser("Podaj adres email: ")
+                                    };
+                                    _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
+                                    _userService.RegisterUser(newUser);
+
                                     break;
 
                                 case 3:
