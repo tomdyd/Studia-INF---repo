@@ -1,6 +1,7 @@
 ﻿using projectDydaTomasz.Core.Interfaces;
 using projectDydaTomasz.Core.Models;
 using projectDydaTomaszCore.Interfaces;
+using projectDydaTomaszCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace projectDydaTomasz.Core.Services
             _carRepository = carService;
         }
 
-        public List<Car> GetCars(string model)
+        public List<Car> GetCars(string searchTerm)
         {
-            var carList = _carRepository.GetFilteredDataList("user.userId", model);
+            var carList = _carRepository.GetFilteredDataList("user.userId", searchTerm);
             return carList;
         }
 
@@ -28,6 +29,16 @@ namespace projectDydaTomasz.Core.Services
         {
             var carList = _carRepository.GetAllDataList();
             return carList;
+        }
+
+        public void UpdateCar(Car updatingCar)
+        {
+            _carRepository.UpdateData("carId", updatingCar.carId, updatingCar);
+        }
+
+        public void DeleteCar(string searchTerm)
+        {
+            _carRepository.DeleteData("carId", searchTerm);
         }
     }
 }

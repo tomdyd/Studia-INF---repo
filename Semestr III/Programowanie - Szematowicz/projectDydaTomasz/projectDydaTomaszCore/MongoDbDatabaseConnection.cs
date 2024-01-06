@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Serializers;
+﻿using Amazon.Auth.AccessControlPolicy.ActionIdentifiers;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
@@ -80,5 +81,19 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
         var collection = GetCollection(_collectionName);
         var result = collection.Find(_ => true).ToList();
         return result;
+    }
+
+    public void UpdateData(string property, string searchTerm, T updatingData)
+    {
+        var filter = Builders<T>.Filter.Eq(property, searchTerm);
+        var collection = GetCollection(_collectionName);
+        collection.ReplaceOne(filter, updatingData);
+    }
+
+    public void DeleteData(string property, string searchTerm)
+    {
+        var filter = Builders<T>.Filter.Eq(property, searchTerm);
+        var collection = GetCollection(_collectionName);
+        collection.DeleteOne(filter);
     }
 }

@@ -10,11 +10,17 @@ namespace projectDydaTomasz
     {
         public void MainMenu()
         {
-            Console.WriteLine("1. Połącz z MongoDb");
-            Console.WriteLine("2. Połącz z sql");
+            Console.WriteLine("1. Połącz z bazą danych MongoDb");
+            Console.WriteLine("2. Połącz z bazą danych  SQL");
             Console.WriteLine("3. Wyjdź");
         }
 
+        public void LoginMenu()
+        {
+            Console.WriteLine("1. Zaloguj się");
+            Console.WriteLine("2. Zarejestruj się");
+            Console.WriteLine("3. Wróć");
+        }
         public void CollectionsMenu()
         {
             Console.WriteLine("1. Samochody");
@@ -25,10 +31,11 @@ namespace projectDydaTomasz
         public void carMenu()
         {
             Console.WriteLine("1. Dodaj nowy samochód");
-            Console.WriteLine("2. Wczytaj swoje samochody");
-            Console.WriteLine("3. Zaktualizuj swój samochód");
-            Console.WriteLine("4. Usuń swój samochód");
-            Console.WriteLine("5. Wróć");
+            Console.WriteLine("2. Wczytaj listę swoich samochodów");
+            Console.WriteLine("3. Wyszukaj samochody po marce");
+            Console.WriteLine("4. Zaktualizuj swój samochód");
+            Console.WriteLine("5. Usuń swój samochód");
+            Console.WriteLine("6. Wróć");
         }
 
         public void apartmentMenu()

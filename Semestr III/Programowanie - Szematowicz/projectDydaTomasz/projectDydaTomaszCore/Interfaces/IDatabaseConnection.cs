@@ -13,6 +13,8 @@ namespace projectDydaTomaszCore.Interfaces
         public T GetFilteredData(string property, string searchingTerm);
         public List<T> GetFilteredDataList(string property, string searchingTerm);
         public List<T> GetAllDataList();
+        public void UpdateData(string property, string searchTerm, T updatingData);
+        public void DeleteData(string property, string searchTerm);
 
         // Dodaj inne metody związane z operacjami bazodanowymi, jeśli to konieczne.
     }

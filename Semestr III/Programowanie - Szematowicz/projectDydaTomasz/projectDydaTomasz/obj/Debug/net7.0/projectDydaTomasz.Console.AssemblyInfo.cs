@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projectDydaTomasz.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea0690837385a4365f76c7ff6924d22bfbb4c382")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9384efebe93c805733519fd07111b4468338d7a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("projectDydaTomasz.Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projectDydaTomasz.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

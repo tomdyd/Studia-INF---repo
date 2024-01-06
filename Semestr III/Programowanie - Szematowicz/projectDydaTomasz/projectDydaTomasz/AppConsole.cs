@@ -1,5 +1,6 @@
 ﻿
 using projectDydaTomasz.Interfaces;
+using System.Text;
 
 namespace projectDydaTomasz
 {
@@ -35,6 +36,41 @@ namespace projectDydaTomasz
 
         public string GetPasswordFromUser()
         {
+            var password = new StringBuilder();
+            do
+            {
+                Console.Write("Podaj hasło: ");
+                while (true)
+                {
+                    ConsoleKeyInfo i = Console.ReadKey(true);
+                    if (i.Key == ConsoleKey.Enter)
+                    {
+                        Console.WriteLine();
+                        break;
+                    }
+                    else if (i.Key == ConsoleKey.Backspace)
+                    {
+                        if (password.Length > 0)
+                        {
+                            password.Remove(password.Length - 1, 1);
+                            Console.Write("\b \b");
+                        }
+                    }
+                    else
+                    {
+                        password.Append(i.KeyChar);
+                        Console.Write("*");
+                    }
+                }
+                if (string.IsNullOrEmpty(password.ToString()))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Password can not be empty! Try again: ");
+                }
+            } while (string.IsNullOrEmpty(password.ToString()));
+
+            return password.ToString();
+
             Console.Write("Podaj hasło: ");
             var response = Console.ReadLine();
             return response;
