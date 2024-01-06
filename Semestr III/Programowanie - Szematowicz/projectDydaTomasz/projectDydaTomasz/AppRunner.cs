@@ -35,11 +35,11 @@ namespace projectDydaTomasz
                 {
                     case 1:
                         _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
-                        //var login = _console.GetLoginFromUser();
-                        //var password = _console.GetPasswordFromUser();
-                        var loggedUser = _userService.GetUser();
+                        var login = _console.GetLoginFromUser();
+                        var password = _console.GetPasswordFromUser();
+                        var loggedUser = _userService.GetUser(login);
 
-                        if (loggedUser != null)
+                        if (loggedUser != null && loggedUser.Username == login && loggedUser.PasswordHash == password)
                         {
                             _console.WriteLine("Zalogowano poprawnie!");
                             _console.ReadLine();
@@ -117,6 +117,7 @@ namespace projectDydaTomasz
                         else
                         {
                             _console.WriteLine("Niepoprawne dane!");
+                            _console.ReadLine();
                         }
 
                         break;
@@ -145,10 +146,10 @@ namespace projectDydaTomasz
         //    _console.ReadLine();
         //}
 
-        //private User CheckUser(string username, string password)
-        //{
-        //    User loggedUser = _userService.GetUser(username, password);
-        //    return loggedUser;
-        //}
+        private User CheckUser(string username, string password)
+        {
+            User loggedUser = _userService.GetUser(username);
+            return loggedUser;
+        }
     }
 }
