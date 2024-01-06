@@ -59,11 +59,26 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
             Console.WriteLine($"Błąd podczas dodawania do bazy danych MongoDB: {ex.Message}");
         }
     }
-    public T GetFilteredData(string searchingTerm)
+    public T GetFilteredData(string property, string searchingTerm)
     {
-        var filter = Builders<T>.Filter.Eq("Username", searchingTerm);
+        var filter = Builders<T>.Filter.Eq(property, searchingTerm);
         var collection = GetCollection(_collectionName);
         var result = collection.Find(filter).FirstOrDefault();
+        return result;
+    }
+
+    public List<T> GetFilteredDataList(string property, string searchingTerm)
+    {
+        var filter = Builders<T>.Filter.Eq(property, searchingTerm);
+        var collection = GetCollection(_collectionName);
+        var result = collection.Find(filter).ToList();
+        return result;
+    }
+
+    public List<T> GetAllDataList()
+    {
+        var collection = GetCollection(_collectionName);
+        var result = collection.Find(_ => true).ToList();
         return result;
     }
 }

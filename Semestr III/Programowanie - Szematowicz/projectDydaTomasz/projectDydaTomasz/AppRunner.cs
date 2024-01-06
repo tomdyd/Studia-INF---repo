@@ -1,8 +1,8 @@
-﻿using projectDydaTomasz.Core.Models;
+﻿using projectDydaTomasz.Core.Interfaces;
+using projectDydaTomasz.Core.Models;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
-using projectDydaTomaszCore.Services;
 
 namespace projectDydaTomasz
 {
@@ -10,17 +10,19 @@ namespace projectDydaTomasz
     {
         private readonly IMenu _menu;
         private readonly IAppConsole _console;
-        private readonly IUserService _userService;
         private readonly IDatabaseConnection<User> _userMongoClient;
         private readonly IDatabaseConnection<Car> _carMongoClient;
+        private readonly IUserService _userService;
+        private readonly ICarService _carService;
 
-        public AppRunner(IMenu menu, IAppConsole console, IUserService userService, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<Car> carMongoClient)
+        public AppRunner(IMenu menu, IAppConsole console, IDatabaseConnection<User> userMongoClient, IDatabaseConnection<Car> carMongoClient, IUserService userService, ICarService carService)
         {
             _menu = menu;
             _console = console;
-            _userService = userService;
             _userMongoClient = userMongoClient;
             _carMongoClient = carMongoClient;
+            _userService = userService;
+            _carService = carService;
         }
 
         public void StartApp()
@@ -37,13 +39,10 @@ namespace projectDydaTomasz
                         _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
                         var login = _console.GetLoginFromUser();
                         var password = _console.GetPasswordFromUser();
-                        var loggedUser = _userService.GetUser(login);
+                        var loggedUser = _userService.AuthorizeUser(login, password);
 
-                        if (loggedUser != null && loggedUser.Username == login && loggedUser.PasswordHash == password)
+                        if (loggedUser != null)
                         {
-                            _console.WriteLine("Zalogowano poprawnie!");
-                            _console.ReadLine();
-
                             bool runMongoCollectionsMenu = true;
                             while (runMongoCollectionsMenu)
                             {
@@ -63,13 +62,50 @@ namespace projectDydaTomasz
                                             _menu.carMenu();
                                             res = _console.GetResponseFromUser();
 
-                                            switch(res)
+                                            switch (res)
                                             {
                                                 case 1:
+                                                    var numberOfCars = _carService.GetAllCarsList();
+                                                    var newCar = new Car()
+                                                    {
+                                                        carNumber = numberOfCars.Count() + 1,
+                                                        carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
+                                                        carModel = _console.GetDataFromUser("Podaj model samochodu: "),
+                                                        carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
+                                                        engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
+                                                        user = loggedUser
+                                                    };
+
+                                                    _carMongoClient.AddToDb(newCar);
+
                                                     break;
                                                 case 2:
+                                                    var searchTerm = _console.GetDataFromUser("Podaj model szukanego samochodu: ");
+                                                    var carList = _carService.GetCars(loggedUser.userId);
+                                                    foreach (var car in carList)
+                                                    {
+                                                        if (car.carModel.ToLower() == searchTerm.ToLower())
+                                                        {
+                                                            _console.WriteLine(
+                                                                $"{car.carNumber}." +
+                                                                $" marka: {car.carBrand}," +
+                                                                $" model: {car.carModel}," +
+                                                                $" rok produkcji: {car.carProductionYear}, " +
+                                                                $"pojemność silnika: {car.engineCapacity}");
+                                                        }
+                                                    }
+                                                    _console.ReadLine();
                                                     break;
                                                 case 3:
+                                                    bool isNumber = false;
+
+                                                    do
+                                                    {
+                                                        searchTerm = _console.GetDataFromUser("Podaj nr samochodu który chcesz zaktualizować");
+                                                        isNumber = int.TryParse(searchTerm, out int carNumber);
+                                                    }while (!isNumber);
+
+
                                                     break;
                                                 case 4:
                                                     break;
@@ -114,17 +150,10 @@ namespace projectDydaTomasz
                                 }
                             }
                         }
-                        else
-                        {
-                            _console.WriteLine("Niepoprawne dane!");
-                            _console.ReadLine();
-                        }
-
                         break;
 
                     case 2:
                         _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
-                        //ShowAllUsers("test1");
                         break;
                     case 3:
 
@@ -138,18 +167,6 @@ namespace projectDydaTomasz
             }
         }
 
-        //private void ShowAllUsers(string username)
-        //{
-        //    var user = _userService.GetUser(username);
-        //    Console.WriteLine(username);
-        //    Console.WriteLine();
-        //    _console.ReadLine();
-        //}
-
-        private User CheckUser(string username, string password)
-        {
-            User loggedUser = _userService.GetUser(username);
-            return loggedUser;
-        }
+        
     }
 }

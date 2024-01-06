@@ -1,5 +1,8 @@
-﻿using projectDydaTomaszCore.Interfaces;
+﻿using projectDydaTomasz.Core.Interfaces;
+using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace projectDydaTomaszCore.Services
 {
@@ -7,15 +10,32 @@ namespace projectDydaTomaszCore.Services
     {
         private readonly IDatabaseConnection<User> _userRepository;
 
-        public UserService(IDatabaseConnection<User> userService)
+        public UserService(IDatabaseConnection<User> userRepository)
         {
-            _userRepository = userService;
+            _userRepository = userRepository;
         }
 
-        public User GetUser(string username)
+        public User AuthorizeUser(string username, string password)
         {
-            var users = _userRepository.GetFilteredData(username);
-            return users;
+            var user = _userRepository.GetFilteredData("username", username);
+
+            if (user != null)
+            {
+                if (user.username == username && user.passwordHash == password)
+                {
+                    Console.WriteLine("Zalogowano poprawnie");
+                    Console.ReadLine();
+                    return user;
+                }
+                else
+                {
+                    Console.WriteLine("Niepoprawne dane!");
+                    Console.ReadLine();
+                }
+            }
+            Console.WriteLine("Niepoprawne dane!");
+            Console.ReadLine();
+            return null;
         }
     }
 }

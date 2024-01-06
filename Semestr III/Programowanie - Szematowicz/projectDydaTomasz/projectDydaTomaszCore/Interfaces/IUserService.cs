@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projectDydaTomaszCore.Services
+namespace projectDydaTomasz.Core.Interfaces
 {
     public interface IUserService
     {
-        public User GetUser(string username);
+        public User AuthorizeUser(string username, string password);
     }
 }

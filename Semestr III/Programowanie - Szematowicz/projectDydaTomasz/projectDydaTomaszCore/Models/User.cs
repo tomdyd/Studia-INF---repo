@@ -8,14 +8,14 @@ namespace projectDydaTomaszCore.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string UserId { get; set; }
-        public string Username { get; set; }
-        public string PasswordHash { get; set; }
-        public string Email { get; set; }
+        public string userId { get; set; }
+        public string username { get; set; }
+        public string passwordHash { get; set; }
+        public string email { get; set; }
 
         public override string ToString()
         {
-            return $"UserID: {UserId}\nUsername: {Username}\nPassword: {PasswordHash}\nEmail: {Email}";
+            return $"UserID: {userId}\nUsername: {username}\nPassword: {passwordHash}\nEmail: {email}";
         }
     }    
 }

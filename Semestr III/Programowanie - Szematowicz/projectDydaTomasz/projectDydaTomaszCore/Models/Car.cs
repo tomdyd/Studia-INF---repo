@@ -14,10 +14,11 @@ namespace projectDydaTomasz.Core.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string carId { get; set; }
+        public int carNumber { get; set; }
         public string carBrand { get; set; }
         public string carModel { get; set; }
-        public int carProductionYear{ get; set; }
-        public double engineCapacity { get; set; }
+        public string carProductionYear{ get; set; }
+        public string engineCapacity { get; set; }
         public User user{ get; set; }
     }
 }

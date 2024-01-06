@@ -1,4 +1,6 @@
-﻿using projectDydaTomasz.Core.Models;
+﻿using projectDydaTomasz.Core.Interfaces;
+using projectDydaTomasz.Core.Models;
+using projectDydaTomasz.Core.Services;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
@@ -15,8 +17,9 @@ namespace projectDydaTomasz
             IDatabaseConnection<User> userMongoClient = new MongoDbDatabaseConnection<User>();
             IDatabaseConnection<Car> carMongoClient = new MongoDbDatabaseConnection<Car>();
             IUserService userService = new UserService(userMongoClient);
+            ICarService carService = new CarService(carMongoClient);
 
-            var appRunner = new AppRunner(menu, console, userService, userMongoClient, carMongoClient);
+            var appRunner = new AppRunner(menu, console, userMongoClient, carMongoClient, userService, carService);
             appRunner.StartApp();
         }
     }

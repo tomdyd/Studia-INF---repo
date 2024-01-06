@@ -3,6 +3,7 @@
     public interface IAppConsole
     {
         int GetResponseFromUser();
+        string GetDataFromUser(string msg);
 
         string GetLoginFromUser();
 
