@@ -35,33 +35,88 @@ namespace projectDydaTomasz
                 {
                     case 1:
                         _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
-                        var login = _console.GetLoginFromUser();
-                        var password = _console.GetPasswordFromUser();
-                        var loggedUser = CheckUser(login, password);
+                        //var login = _console.GetLoginFromUser();
+                        //var password = _console.GetPasswordFromUser();
+                        var loggedUser = _userService.GetUser();
 
                         if (loggedUser != null)
                         {
                             _console.WriteLine("Zalogowano poprawnie!");
+                            _console.ReadLine();
+
+                            bool runMongoCollectionsMenu = true;
+                            while (runMongoCollectionsMenu)
+                            {
+                                _console.Clear();
+                                _menu.CollectionsMenu();
+                                res = _console.GetResponseFromUser();
+
+                                switch (res)
+                                {
+                                    case 1:
+                                        _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
+                                        bool runCarMenu = true;
+
+                                        while (runCarMenu)
+                                        {
+                                            _console.Clear();
+                                            _menu.carMenu();
+                                            res = _console.GetResponseFromUser();
+
+                                            switch(res)
+                                            {
+                                                case 1:
+                                                    break;
+                                                case 2:
+                                                    break;
+                                                case 3:
+                                                    break;
+                                                case 4:
+                                                    break;
+                                                case 5:
+                                                    runCarMenu = false;
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
+                                        bool runApartmentMenu = true;
+
+                                        while (runApartmentMenu)
+                                        {
+                                            _console.Clear();
+                                            _menu.apartmentMenu();
+                                            res = _console.GetResponseFromUser();
+
+                                            switch (res)
+                                            {
+                                                case 1:
+                                                    break;
+                                                case 2:
+                                                    break;
+                                                case 3:
+                                                    break;
+                                                case 4:
+                                                    break;
+                                                case 5:
+                                                    runApartmentMenu = false;
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+                                        runMongoCollectionsMenu = false;
+                                        break;
+                                    default:
+                                        Console.WriteLine("Nie ma takiej opcji");
+                                        break;
+                                }
+                            }
                         }
                         else
                         {
                             _console.WriteLine("Niepoprawne dane!");
-                        }
-                        _console.ReadLine();
-
-                        _console.Clear();
-                        _menu.mongoCollectionsMenu();
-                        res = _console.GetResponseFromUser();
-
-                        switch (res)
-                        {
-                            case 1:
-                                _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                break;
                         }
 
                         break;
@@ -90,10 +145,10 @@ namespace projectDydaTomasz
         //    _console.ReadLine();
         //}
 
-        private User CheckUser(string username, string password)
-        {
-            User loggedUser = _userService.GetUser(username, password);
-            return loggedUser;
-        }
+        //private User CheckUser(string username, string password)
+        //{
+        //    User loggedUser = _userService.GetUser(username, password);
+        //    return loggedUser;
+        //}
     }
 }

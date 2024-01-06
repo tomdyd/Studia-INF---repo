@@ -12,15 +12,18 @@ namespace projectDydaTomaszCore.Services
             _userRepository = userService;
         }
 
-        public User GetUser(string username, string password)
+        public User GetUser(/*string username, string password*/)
         {
-            var users = _userRepository.GetData();
-            var user = users.Find(x => x.Username == username);
-            if (user.PasswordHash == password)
-            {
-                return user;       
-            }
-            return null;
+            var users = _userRepository.GetDataT();
+            //var user = users.Find(x => x.Username == username);
+            //if (user != null)
+            //{
+            //    if (user.PasswordHash == password)
+            //    {
+            //        return user;
+            //    }
+            //}
+            return users;
         }
     }
 }

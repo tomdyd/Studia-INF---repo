@@ -11,6 +11,7 @@ namespace projectDydaTomaszCore.Interfaces
         public IMongoCollection<T> GetCollection(string collectionName);
         public void AddToDb(T input);
         public List<T> GetData();
+        public T GetDataT();
 
         // Dodaj inne metody związane z operacjami bazodanowymi, jeśli to konieczne.
     }

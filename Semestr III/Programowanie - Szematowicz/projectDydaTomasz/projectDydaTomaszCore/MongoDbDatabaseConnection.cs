@@ -59,11 +59,16 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
             Console.WriteLine($"Błąd podczas dodawania do bazy danych MongoDB: {ex.Message}");
         }
     }
-    public List<T> GetData()
+    public T GetDataT()
     {
+        var filter = Builders<T>.Filter.Eq("Username", "testUser");
         var collection = GetCollection(_collectionName);
-        var result = collection.Find(_ => true);
-        _users = result.ToList();
-        return _users;
+        var result = collection.Find(filter).FirstOrDefault();
+        return result;
+    }
+
+    List<T> IDatabaseConnection<T>.GetData()
+    {
+        return null;
     }
 }

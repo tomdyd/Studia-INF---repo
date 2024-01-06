@@ -15,11 +15,29 @@ namespace projectDydaTomasz
             Console.WriteLine("3. Wyjdź");
         }
 
-        public void mongoCollectionsMenu()
+        public void CollectionsMenu()
         {
-            Console.WriteLine("1. Wyświetl wszystkie samochody");
-            Console.WriteLine("2. Wyświetl wszystkie żarówki");
+            Console.WriteLine("1. Samochody");
+            Console.WriteLine("2. Mieszkania");
             Console.WriteLine("3. Wyloguj");
+        }
+
+        public void carMenu()
+        {
+            Console.WriteLine("1. Dodaj nowy samochód");
+            Console.WriteLine("2. Wczytaj swoje samochody");
+            Console.WriteLine("3. Zaktualizuj swój samochód");
+            Console.WriteLine("4. Usuń swój samochód");
+            Console.WriteLine("5. Wróć");
+        }
+
+        public void apartmentMenu()
+        {
+            Console.WriteLine("1. Dodaj nowe mieszkanie");
+            Console.WriteLine("2. Wczytaj swoje mieszkania");
+            Console.WriteLine("3. Zaktualizuj swój mieszkanie");
+            Console.WriteLine("4. Usuń swój mieszkanie");
+            Console.WriteLine("5. Wróć");
         }
     }
 }

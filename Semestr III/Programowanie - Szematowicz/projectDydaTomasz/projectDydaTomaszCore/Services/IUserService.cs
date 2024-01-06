@@ -9,6 +9,6 @@ namespace projectDydaTomaszCore.Services
 {
     public interface IUserService
     {
-        public User GetUser(string username, string password);
+        public User GetUser(/*string username, string password*/);
     }
 }

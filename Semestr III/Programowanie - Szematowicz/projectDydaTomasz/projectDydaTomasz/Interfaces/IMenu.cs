@@ -3,7 +3,8 @@
     public interface IMenu
     {
         void MainMenu();
-
-        void mongoCollectionsMenu();
+        void CollectionsMenu();
+        void carMenu();
+        void apartmentMenu();
     }
 }
