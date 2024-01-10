@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+
+class MorseCodeConverter
+{
+    static Dictionary<char, string> morseAlphabet = new Dictionary<char, string>()
+    {
+        {'A', ".-"},
+        {'B', "-..."},
+        {'C', "-.-."},
+        {'D', "-.."},
+        {'E', "."},
+        {'F', "..-."},
+        {'G', "--."},
+        {'H', "...."},
+        {'I', ".."},
+        {'J', ".---"},
+        {'K', "-.-"},
+        {'L', ".-.."},
+        {'M', "--"},
+        {'N', "-."},
+        {'O', "---"},
+        {'P', ".--."},
+        {'Q', "--.-"},
+        {'R', ".-."},
+        {'S', "..."},
+        {'T', "-"},
+        {'U', "..-"},
+        {'V', "...-"},
+        {'W', ".--"},
+        {'X', "-..-"},
+        {'Y', "-.--"},
+        {'Z', "--.."},
+        {'1', ".----"},
+        {'2', "..--"},
+        {'3', "...--"},
+        {'4', "...-"},
+        {'5', "....."},
+        {'6', "-...."},
+        {'7', "..---"},
+        {'8', "...--"},
+        {'9', "----."},
+        {'0', "-----"}
+    };
+
+    static void Main()
+    {
+        Console.Write("Podaj ciąg tekstowy: ");
+        string input = Console.ReadLine().ToUpper();
+
+        string morseCode = ConvertToMorseCode(input);
+        Console.WriteLine("Kod Morse'a: " + morseCode);
+    }
+
+    static string ConvertToMorseCode(string input)
+    {
+        string morseCode = "/";
+
+        foreach (char c in input)
+        {
+            if (morseAlphabet.ContainsKey(c))
+            {
+                // znak / służy do rozdzielenia poszególnych znaków alfabetu morsa
+                morseCode += morseAlphabet[c] + "/";
+            }
+        }
+
+        // znaki białe są pomijane ponieważ nie posiadają klucza w słowniku
+        return morseCode;
+    }
+}

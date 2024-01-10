@@ -1,0 +1,15 @@
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\bin\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.exe
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\bin\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.deps.json
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\bin\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.runtimeconfig.json
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\bin\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.dll
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\bin\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.pdb
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.csproj.AssemblyReference.cache
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.AssemblyInfoInputs.cache
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.AssemblyInfo.cs
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.csproj.CoreCompileInputs.cache
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.dll
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\refint\pracaDomowa1_Tomasz_Dyda.dll
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.pdb
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\pracaDomowa1_Tomasz_Dyda.genruntimeconfig.cache
+D:\Dane\Studia INF\Programowanie II\praceDomowe\pracaDomowa1_Tomasz_Dyda\pracaDomowa1_Tomasz_Dyda\obj\Debug\net6.0\ref\pracaDomowa1_Tomasz_Dyda.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "pracaDomowa1_Tomasz_Dyda/1.0.0": {
+        "runtime": {
+          "pracaDomowa1_Tomasz_Dyda.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "pracaDomowa1_Tomasz_Dyda/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

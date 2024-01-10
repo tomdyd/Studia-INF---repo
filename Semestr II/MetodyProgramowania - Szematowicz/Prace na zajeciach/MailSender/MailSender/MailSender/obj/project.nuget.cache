@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "tkyE33Th2roxmtdhmR56hh1S/9YpjvEavQInPsUIa8Md+U3sflq7S7YSc7coEMbQiNpne+N/2vck47ZTVcoo/g==",
+  "success": true,
+  "projectFilePath": "D:\\Dane\\gitRepository\\MailSender\\MailSender\\MailSender\\MailSender.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tomek\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Tomek\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Tomek\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Tomek\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}

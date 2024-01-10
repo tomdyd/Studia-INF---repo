@@ -1,0 +1,58 @@
+﻿using System;
+
+class RectangleCalculator
+{
+    static void Main()
+    {
+        Console.Write("Enter the area of the rectangle (1 < area < 1000): ");
+        bool isNumber = int.TryParse(Console.ReadLine(), out int area);
+
+        while(!isNumber || area < 1 || area > 1000)
+        {
+            Console.Clear();
+            Console.Write("Enter the area of the rectangle (1 < area < 1000): ");
+            isNumber = int.TryParse(Console.ReadLine(), out area);
+        }
+
+        // Jako parametr do funkcji przekazujemy pole powierzchni prostokąta
+        int[] dimensions = CalculateRectangleDimensions(area);
+
+        if (dimensions[0] == 0 || dimensions[1] == 0)
+        {
+            Console.WriteLine("There is no rectangle with the given area.");
+        }
+        else
+        {
+            // Jako parametry do funkcji przekazujemy długości boków
+            int perimeter = CalculateRectanglePerimeter(dimensions[0], dimensions[1]);
+            Console.WriteLine("Perimeter of the rectangle: " + perimeter + " (the rectangle with the minimum perimeter will have dimensions " + dimensions[0] + " x " + dimensions[1] + ").");
+        }
+    }
+
+    static int[] CalculateRectangleDimensions(int area)
+    {
+        int[] dimensions = new int[2];
+
+        for (int i = (int)Math.Sqrt(area); i >= 1; i--)
+        {
+            // Sprwadzamy czy podana powierzchnia jest podzielna przez pierwszy z boków prostokąta
+            // (nie może być on większy niż pierwiastek z pola powierzchni (P = a * a)
+            if (area % i == 0)
+            {
+                // Pierwszy z boków jest równy największej możliwej liczbe która dzieli pole powirzchni
+                dimensions[0] = i;
+                // Drugi bok obliczamy dzieląc pole powierzchni przez długość pierwszego boku
+                dimensions[1] = area / i;
+                break;
+            }
+        }
+
+        return dimensions;
+    }
+
+    static int CalculateRectanglePerimeter(int length, int width)
+    {
+        // Wzór na obwód prostokąta
+        return 2 * (length + width);
+    }
+}
