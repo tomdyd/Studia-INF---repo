@@ -41,7 +41,7 @@ namespace projectDydaTomaszCore.Services
         public void RegisterUser(User newUser)
         {
             var userCollection = _userRepository.GetAllDataList();
-            var loginExists = userCollection.Find(x => x.username ==  newUser.username);
+            var loginExists = userCollection.Find(x => x.username == newUser.username);
 
             if (newUser != null && loginExists == null)
             {

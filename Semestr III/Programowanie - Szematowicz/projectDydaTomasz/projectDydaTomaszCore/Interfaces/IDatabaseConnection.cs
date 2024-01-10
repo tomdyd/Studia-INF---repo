@@ -5,10 +5,6 @@ namespace projectDydaTomaszCore.Interfaces
 {
     public interface IDatabaseConnection<T>
     {
-        public void Connect(string connectionString, string databaseName, string collectionName); // Metoda do nawiązywania połączenia z bazą danych.
-
-        public void Disconnect(); // Metoda do zamykania połączenia z bazą danych.
-        public IMongoCollection<T> GetCollection(string collectionName);
         public void AddToDb(T input);
         public T GetFilteredData(string property, string searchingTerm);
         public List<T> GetFilteredDataList(string property, string searchingTerm);

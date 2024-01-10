@@ -15,8 +15,8 @@ namespace projectDydaTomasz
         {
             IMenu menu = new Menu();
             IAppConsole console = new AppConsole();
-            IDatabaseConnection<User> userMongoClient = new MongoDbDatabaseConnection<User>();
-            IDatabaseConnection<Car> carMongoClient = new MongoDbDatabaseConnection<Car>();
+            IDatabaseConnectionExtended<User> userMongoClient = new MongoDbDatabaseConnection<User>();
+            IDatabaseConnectionExtended<Car> carMongoClient = new MongoDbDatabaseConnection<Car>();
             IDatabaseConnection<User> userSqlClient = new SqlitedatabaseConnection<User>();
             IUserService userMongoService = new UserService(userMongoClient);
             IUserService userSqlService = new UserService(userSqlClient);

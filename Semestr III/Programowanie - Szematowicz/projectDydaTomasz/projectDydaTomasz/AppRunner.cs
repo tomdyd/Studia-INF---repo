@@ -10,8 +10,8 @@ namespace projectDydaTomasz
     {
         private readonly IMenu _menu;
         private readonly IAppConsole _console;
-        private readonly IDatabaseConnection<User> _userMongoClient;
-        private readonly IDatabaseConnection<Car> _carMongoClient;
+        private readonly IDatabaseConnectionExtended<User> _userMongoClient;
+        private readonly IDatabaseConnectionExtended<Car> _carMongoClient;
         private readonly IDatabaseConnection<User> _userSqlClient;
         private readonly IUserService _userMongoService;
         private readonly ICarService _carService;
@@ -20,8 +20,8 @@ namespace projectDydaTomasz
         public AppRunner(
             IMenu menu,
             IAppConsole console,
-            IDatabaseConnection<User> userMongoClient,
-            IDatabaseConnection<Car> carMongoClient,
+            IDatabaseConnectionExtended<User> userMongoClient,
+            IDatabaseConnectionExtended<Car> carMongoClient,
             IDatabaseConnection<User> userSqlClient,
             IUserService userMongoService,
             ICarService carService,
@@ -87,7 +87,7 @@ namespace projectDydaTomasz
                                                         switch (res)
                                                         {
                                                             case 1:
-                                                                var numberOfCars = _carService.GetAllCarsList();
+                                                                var numberOfCars = _carService.GetCars(loggedUser.userId);
                                                                 var newCar = CreateCar(numberOfCars, loggedUser);
                                                                 _carMongoClient.AddToDb(newCar);
 
@@ -178,7 +178,7 @@ namespace projectDydaTomasz
                                                                 break;
                                                         }
                                                     }
-                                                    break;
+                                                   break;
                                                 case 2:
                                                     _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
                                                     bool runApartmentMenu = true;
@@ -211,8 +211,7 @@ namespace projectDydaTomasz
                                                 default:
                                                     Console.WriteLine("Nie ma takiej opcji");
                                                     break;
-                                            }
-                                            break;
+                                            }                                            
                                         }
                                     }
                                     break;
@@ -264,8 +263,6 @@ namespace projectDydaTomasz
                                     };
 
                                     _userSqlService.RegisterUser(sqlUser);
-                                    _console.WriteLine("Dodano poprawnie");
-                                    _console.ReadLine();
                                     break;
 
                                 case 3:

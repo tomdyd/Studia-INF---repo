@@ -1,15 +1,12 @@
-﻿using MongoDB.Driver;
-using MongoDB.Driver.Core.Configuration;
-using projectDydaTomaszCore.Interfaces;
+﻿using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 using System.Data.SQLite;
-using System.Security.Cryptography;
 
 namespace projectDydaTomasz.Core
 {
     public class SqlitedatabaseConnection<T> : IDatabaseConnection<T>
     {
-        private readonly string _connectionString = "Data Source=C:\\Users\\t.dyda\\Documents\\Studia-INF---repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
+        private readonly string _connectionString = "Data Source=D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
         public void AddToDb(T item)
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -18,21 +15,22 @@ namespace projectDydaTomasz.Core
 
                 using (var cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "INSERT INTO users (userId, username, passwordHash, email) VALUES ((lower(hex(randomblob(4))) || '-' || lower(hex(randomblob(2))) || '-4' || substr(lower(hex(randomblob(2))),2) || '-a' || substr('89ab',abs(random()) % 4 + 1,1) || '-6' || substr(lower(hex(randomblob(2))),2) || lower(hex(randomblob(6)))), @username, @passwordHash, @email)";                                   
+                    cmd.CommandText = "INSERT INTO users (userId, username, passwordHash, email) VALUES ((lower(hex(randomblob(4))) || '-' || lower(hex(randomblob(2))) || '-4' || substr(lower(hex(randomblob(2))),2) || '-a' || substr('89ab',abs(random()) % 4 + 1,1) || '-6' || substr(lower(hex(randomblob(2))),2) || lower(hex(randomblob(6)))), @username, @passwordHash, @email)";
+
+                    //var data = typeof(T).GetProperty("username");
+                    //var property = data.Name;
+                    //var value = data.GetValue(item);
+
+                    //Console.WriteLine($"property: {property}, value: {value}");
 
                     foreach (var property in typeof(T).GetProperties())
                     {
                         cmd.Parameters.AddWithValue($"@{property.Name}", property.GetValue(item));
-                    }                   
+                    }
 
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
-
-        public void Connect(string connectionString, string databaseName, string collectionName)
-        {
-            throw new NotImplementedException();
         }
 
         public void DeleteData(string property, string searchTerm)
@@ -40,19 +38,15 @@ namespace projectDydaTomasz.Core
             throw new NotImplementedException();
         }
 
-        public void Disconnect()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<T> GetAllDataList()
         {
+            List<T> dataList = new List<T>();
+
             using (var connection = new SQLiteConnection(_connectionString))
             {
-                List<T> dataList;
                 connection.Open();
 
-                using(var cmd = new SQLiteCommand(connection))
+                using (var cmd = new SQLiteCommand(connection))
                 {
                     cmd.CommandText = "SELECT * FROM users";
 
@@ -60,27 +54,25 @@ namespace projectDydaTomasz.Core
                     {
                         if (reader.Read())
                         {
-                            while(reader.Read())
+                            while (reader.Read())
                             {
-                                foreach (var property in typeof(T).GetProperties())
+                                T data = Activator.CreateInstance<T>();
+
+                                if (typeof(T) == typeof(User))
                                 {
-                                    
-                                    cmd.Parameters.AddWithValue($"@{property.Name}", property.GetValue(item));
+                                    User user = data as User;
+                                    user.username = reader["username"].ToString();
+                                    user.passwordHash = reader["passwordHash"].ToString();
+                                    user.email = reader["email"].ToString();
                                 }
-                                    T dataItem = mapFunction(reader);
-                                dataList.Add(dataItem);
+
+                                dataList.Add(data);
                             }
                         }
                     }
                 }
-
-                
             }
-        }
-
-        public IMongoCollection<T> GetCollection(string collectionName)
-        {
-            throw new NotImplementedException();
+            return dataList;
         }
 
         public T GetFilteredData(string property, string searchingTerm)

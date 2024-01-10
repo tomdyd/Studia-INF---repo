@@ -1,10 +1,11 @@
 ﻿using Amazon.Auth.AccessControlPolicy.ActionIdentifiers;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using projectDydaTomasz.Core.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 
-public class MongoDbDatabaseConnection<T> : IDatabaseConnection<T>
+public class MongoDbDatabaseConnection<T> : IDatabaseConnectionExtended<T>
 {
     private MongoClient _mongoClient;
     private IMongoDatabase _database;
