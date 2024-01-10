@@ -12,7 +12,7 @@ namespace projectDydaTomasz.Core.Interfaces
     {
         public List<Car> GetCars(string searchTerm);
 
-        public List<Car> GetAllCarsList();
+        //public List<Car> GetAllCarsList();
         public void UpdateCar(Car updatingCar);
         public void DeleteCar(string searchTerm);
     }

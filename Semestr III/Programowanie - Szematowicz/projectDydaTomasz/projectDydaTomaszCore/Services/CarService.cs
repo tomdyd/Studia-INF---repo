@@ -25,11 +25,11 @@ namespace projectDydaTomasz.Core.Services
             return carList;
         }
 
-        public List<Car> GetAllCarsList()
-        {
-            var carList = _carRepository.GetAllDataList();
-            return carList;
-        }
+        //public List<Car> GetAllCarsList()
+        //{
+        //    var carList = _carRepository.GetAllDataList();
+        //    return carList;
+        //}
 
         public void UpdateCar(Car updatingCar)
         {

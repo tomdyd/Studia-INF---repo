@@ -17,12 +17,14 @@ namespace projectDydaTomasz
             IAppConsole console = new AppConsole();
             IDatabaseConnectionExtended<User> userMongoClient = new MongoDbDatabaseConnection<User>();
             IDatabaseConnectionExtended<Car> carMongoClient = new MongoDbDatabaseConnection<Car>();
+            IDatabaseConnection<Car> carSqlClient = new SqlitedatabaseConnection<Car>();
             IDatabaseConnection<User> userSqlClient = new SqlitedatabaseConnection<User>();
             IUserService userMongoService = new UserService(userMongoClient);
+            ICarService carMongoService = new CarService(carMongoClient);
             IUserService userSqlService = new UserService(userSqlClient);
-            ICarService carService = new CarService(carMongoClient);
+            ICarService carSqlService = new CarService(carSqlClient);
 
-            var appRunner = new AppRunner(menu, console, userMongoClient, carMongoClient, userSqlClient, userMongoService, carService, userSqlService);
+            var appRunner = new AppRunner(menu, console, userMongoClient, carMongoClient, userSqlClient, carSqlClient, userMongoService, carMongoService, userSqlService, carSqlService);
             appRunner.StartApp();
         }
     }

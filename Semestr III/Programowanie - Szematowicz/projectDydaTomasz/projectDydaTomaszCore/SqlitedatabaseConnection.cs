@@ -1,6 +1,8 @@
-﻿using projectDydaTomaszCore.Interfaces;
+﻿using MongoDB.Driver;
+using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 using System.Data.SQLite;
+using System.Reflection.Metadata;
 
 namespace projectDydaTomasz.Core
 {
@@ -41,6 +43,7 @@ namespace projectDydaTomasz.Core
         public List<T> GetAllDataList()
         {
             List<T> dataList = new List<T>();
+            var dataname = typeof(T).Name; //pobiera nazwę klasy która później przekazuje jako nazwę tabeli do przeszukiwania
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -48,7 +51,7 @@ namespace projectDydaTomasz.Core
 
                 using (var cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT * FROM users";
+                    cmd.CommandText = $"SELECT * FROM {dataname}s";
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -77,13 +80,79 @@ namespace projectDydaTomasz.Core
 
         public T GetFilteredData(string property, string searchingTerm)
         {
-            throw new NotImplementedException();
+            List<T> dataList = new List<T>();
+            var dataname = typeof(T).Name;
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = $"SELECT * FROM {dataname}s WHERE {property} = @searchingTerm";
+                    cmd.Parameters.AddWithValue("@searchingTerm", searchingTerm);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+
+                            T data = Activator.CreateInstance<T>();
+
+                            if (typeof(T) == typeof(User))
+                            {
+                                User user = data as User;
+                                user.username = reader["username"].ToString();
+                                user.passwordHash = reader["passwordHash"].ToString();
+                                user.email = reader["email"].ToString();
+
+                            }
+                            return data;
+
+                        }
+                    }
+                }
+            }
+            return default;
         }
 
         public List<T> GetFilteredDataList(string property, string searchingTerm)
         {
-            throw new NotImplementedException();
-        }
+            List<T> dataList = new List<T>();
+            var dataname = typeof(T).Name;
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = $"SELECT * FROM {dataname}s WHERE {property} = {searchingTerm}";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            while (reader.Read())
+                            {
+                                T data = Activator.CreateInstance<T>();
+
+                                if (typeof(T) == typeof(User))
+                                {
+                                    User user = data as User;
+                                    user.username = reader["username"].ToString();
+                                    user.passwordHash = reader["passwordHash"].ToString();
+                                    user.email = reader["email"].ToString();
+                                }
+
+                                dataList.Add(data);
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        } //to check
 
         public void UpdateData(string property, string searchTerm, T updatingData)
         {

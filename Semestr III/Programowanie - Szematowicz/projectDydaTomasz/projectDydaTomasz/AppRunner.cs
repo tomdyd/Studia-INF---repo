@@ -13,9 +13,11 @@ namespace projectDydaTomasz
         private readonly IDatabaseConnectionExtended<User> _userMongoClient;
         private readonly IDatabaseConnectionExtended<Car> _carMongoClient;
         private readonly IDatabaseConnection<User> _userSqlClient;
+        private readonly IDatabaseConnection<Car> _carSqlClient;
         private readonly IUserService _userMongoService;
-        private readonly ICarService _carService;
+        private readonly ICarService _carMongoService;
         private readonly IUserService _userSqlService;
+        private readonly ICarService _carSqlService;
 
         public AppRunner(
             IMenu menu,
@@ -23,18 +25,22 @@ namespace projectDydaTomasz
             IDatabaseConnectionExtended<User> userMongoClient,
             IDatabaseConnectionExtended<Car> carMongoClient,
             IDatabaseConnection<User> userSqlClient,
+            IDatabaseConnection<Car> carSqlClient,
             IUserService userMongoService,
-            ICarService carService,
-            IUserService userSqlService)
+            ICarService carMongoService,
+            IUserService userSqlService,
+            ICarService carSqlService)
         {
             _menu = menu;
             _console = console;
             _userMongoClient = userMongoClient;
             _carMongoClient = carMongoClient;
             _userSqlClient = userSqlClient;
+            _carSqlClient = carSqlClient;
             _userMongoService = userMongoService;
-            _carService = carService;
+            _carMongoService = carMongoService;
             _userSqlService = userSqlService;
+            _carSqlService = carSqlService;
         }
 
         public void StartApp()
@@ -87,14 +93,14 @@ namespace projectDydaTomasz
                                                         switch (res)
                                                         {
                                                             case 1:
-                                                                var numberOfCars = _carService.GetCars(loggedUser.userId);
+                                                                var numberOfCars = _carMongoService.GetCars(loggedUser.userId);
                                                                 var newCar = CreateCar(numberOfCars, loggedUser);
                                                                 _carMongoClient.AddToDb(newCar);
 
                                                                 break;
 
                                                             case 2:
-                                                                var carList = _carService.GetCars(loggedUser.userId);
+                                                                var carList = _carMongoService.GetCars(loggedUser.userId);
                                                                 foreach (var car in carList)
                                                                 {
                                                                     _console.WriteLine(
@@ -109,7 +115,7 @@ namespace projectDydaTomasz
 
                                                             case 3:
                                                                 var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                carList = _carService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars(loggedUser.userId);
                                                                 foreach (var car in carList)
                                                                 {
                                                                     if (car.carBrand.ToLower() == searchTerm.ToLower())
@@ -127,7 +133,7 @@ namespace projectDydaTomasz
                                                             case 4:
                                                                 _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
                                                                 var carNumber = _console.GetResponseFromUser();
-                                                                carList = _carService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars(loggedUser.userId);
 
                                                                 var updatingCar = carList.Find(x => x.carNumber == carNumber);
                                                                 if (updatingCar != null)
@@ -140,7 +146,7 @@ namespace projectDydaTomasz
                                                                     updatingCar.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
                                                                     updatingCar.user = loggedUser;
 
-                                                                    _carService.UpdateCar(updatingCar);
+                                                                    _carMongoService.UpdateCar(updatingCar);
 
                                                                     _console.WriteLine("Dane zaktualizowane!");
                                                                     _console.ReadLine();
@@ -154,12 +160,12 @@ namespace projectDydaTomasz
                                                             case 5:
                                                                 _console.Write("Podaj numer samochodu który chcesz usunąć: ");
                                                                 carNumber = _console.GetResponseFromUser();
-                                                                carList = _carService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars(loggedUser.userId);
 
                                                                 var deletingCar = carList.Find(x => x.carNumber == carNumber);
                                                                 if (deletingCar != null)
                                                                 {
-                                                                    _carService.DeleteCar(deletingCar.carId);
+                                                                    _carMongoService.DeleteCar(deletingCar.carId);
                                                                     _console.WriteLine("Samochód został usunięty!");
                                                                 }
                                                                 else
@@ -251,7 +257,10 @@ namespace projectDydaTomasz
                             switch (res)
                             {
                                 case 1:
-                                    //logowanie
+                                    var login = _console.GetLoginFromUser();
+                                    var password = _console.GetPasswordFromUser();
+                                    var loggedUser = _userSqlService.AuthorizeUser(login, password);
+                                    //_carSqlService.GetCars(loggedUser.userId);
                                     break;
 
                                 case 2:
