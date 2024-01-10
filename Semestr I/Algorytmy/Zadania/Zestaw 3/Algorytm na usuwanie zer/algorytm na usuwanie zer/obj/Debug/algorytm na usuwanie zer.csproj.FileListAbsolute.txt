@@ -1,8 +1,0 @@
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\obj\Debug\algorytm na usuwanie zer.csproj.AssemblyReference.cache
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\obj\Debug\algorytm na usuwanie zer.csproj.SuggestedBindingRedirects.cache
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\obj\Debug\algorytm na usuwanie zer.csproj.CoreCompileInputs.cache
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\bin\Debug\algorytm na usuwanie zer.exe.config
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\bin\Debug\algorytm na usuwanie zer.exe
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\bin\Debug\algorytm na usuwanie zer.pdb
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\obj\Debug\algorytm na usuwanie zer.exe
-D:\Kopia dysku E\Dane\Studia INF\Programowanie - zajęcia\algorytm na usuwanie zer\obj\Debug\algorytm na usuwanie zer.pdb

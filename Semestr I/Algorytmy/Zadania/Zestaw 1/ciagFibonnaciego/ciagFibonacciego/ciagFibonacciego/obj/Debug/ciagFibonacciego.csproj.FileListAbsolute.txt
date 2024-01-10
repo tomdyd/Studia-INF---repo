@@ -1,8 +1,0 @@
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\bin\Debug\ciagFibonacciego.exe.config
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\bin\Debug\ciagFibonacciego.exe
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\bin\Debug\ciagFibonacciego.pdb
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\obj\Debug\ciagFibonacciego.csproj.AssemblyReference.cache
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\obj\Debug\ciagFibonacciego.csproj.SuggestedBindingRedirects.cache
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\obj\Debug\ciagFibonacciego.csproj.CoreCompileInputs.cache
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\obj\Debug\ciagFibonacciego.exe
-C:\Users\Tomek\Desktop\C#\ciagFibonacciego\ciagFibonacciego\obj\Debug\ciagFibonacciego.pdb
