@@ -71,8 +71,8 @@ namespace projectDydaTomasz
 
                                     if (loggedUser != null)
                                     {
-                                        bool runMongoCollectionsMenu = true;
-                                        while (runMongoCollectionsMenu)
+                                        bool runCollectionsMenu = true;
+                                        while (runCollectionsMenu)
                                         {
                                             _console.Clear();
                                             _menu.CollectionsMenu();
@@ -212,7 +212,8 @@ namespace projectDydaTomasz
                                                     }
                                                     break;
                                                 case 3:
-                                                    runMongoCollectionsMenu = false;
+                                                    runCollectionsMenu = false;
+                                                    loggedUser = null;
                                                     break;
                                                 default:
                                                     Console.WriteLine("Nie ma takiej opcji");
@@ -260,7 +261,37 @@ namespace projectDydaTomasz
                                     var login = _console.GetLoginFromUser();
                                     var password = _console.GetPasswordFromUser();
                                     var loggedUser = _userSqlService.AuthorizeUser(login, password);
-                                    //_carSqlService.GetCars(loggedUser.userId);
+                                    
+                                    if(loggedUser != null)
+                                    {
+                                        bool runCollectionsMenu = true;
+
+                                        while(runCollectionsMenu)
+                                        {
+                                            _console.Clear();
+                                            _menu.CollectionsMenu();
+                                            res = _console.GetResponseFromUser();
+                                            
+                                            switch(res)
+                                            {
+                                                case 1:
+                                                    break;
+                                                case 2:
+                                                    break;
+                                                case 3:
+                                                    runCollectionsMenu = false;
+                                                    loggedUser = null;
+                                                    break;
+                                                case 4:
+                                                    string username = "";
+                                                    string paulina = "";
+                                                    User user = new User();
+                                                    _userSqlClient.UpdateData(username, paulina, user);
+                                                    _console.ReadLine();
+                                                    break;
+                                            }
+                                        }
+                                    }
                                     break;
 
                                 case 2:

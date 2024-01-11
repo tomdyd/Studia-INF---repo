@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using System.Data.Entity;
 using System.Data.SQLite;
 using System.Reflection.Metadata;
 
@@ -8,7 +9,7 @@ namespace projectDydaTomasz.Core
 {
     public class SqlitedatabaseConnection<T> : IDatabaseConnection<T>
     {
-        private readonly string _connectionString = "Data Source=D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
+        private readonly string _connectionString = "Data Source=C:\\Users\\t.dyda\\Documents\\Studia-INF---repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
         public void AddToDb(T item)
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -137,6 +138,8 @@ namespace projectDydaTomasz.Core
                             {
                                 T data = Activator.CreateInstance<T>();
 
+                                MapDataFromReader()
+
                                 if (typeof(T) == typeof(User))
                                 {
                                     User user = data as User;
@@ -156,7 +159,46 @@ namespace projectDydaTomasz.Core
 
         public void UpdateData(string property, string searchTerm, T updatingData)
         {
-            throw new NotImplementedException();
+            var dataname = typeof(T).Name;
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = $"UPDATE {dataname}s WHERE {property} = @searchTerm";
+                    cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                    var objectProperties = typeof(T).GetProperties(); // zwraca wlascwiosci obiektu T
+                    foreach (var prop in objectProperties)
+                    {
+                        Console.WriteLine(prop);
+                    }
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            T data = Activator.CreateInstance<T>();
+                                                  
+                            if(typeof(T) == typeof(User))
+                            {
+                                
+                            }
+
+                            foreach (var prop in objectProperties)
+                            {
+                                var newValue = prop.GetValue(updatingData);
+                                prop.SetValue(, newValue);
+                            }
+                            User user = data as User;
+                            user.username = reader["username"].ToString();
+                            user.passwordHash = reader["passwordHash"].ToString();
+                            user.email = reader["email"].ToString();
+                        }
+                    }
+                }
+            }
         }
     }
 }
