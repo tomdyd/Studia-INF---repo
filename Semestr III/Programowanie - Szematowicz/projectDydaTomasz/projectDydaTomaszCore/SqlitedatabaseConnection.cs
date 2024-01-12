@@ -2,6 +2,7 @@
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 using SharpCompress.Common;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.SQLite;
 using System.Reflection.Metadata;
@@ -10,7 +11,7 @@ namespace projectDydaTomasz.Core
 {
     public class SqlitedatabaseConnection<T> : IDatabaseConnection<T>
     {
-        private readonly string _connectionString = "Data Source=C:\\Users\\t.dyda\\Documents\\Studia-INF---repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
+        private readonly string _connectionString = "Data Source=D:\\Dane\\Studia INF - repo\\Semestr III\\Programowanie - Szematowicz\\sqlite.db;Version=3";
         public void AddToDb(T item)
         {
             using (var connection = new SQLiteConnection(_connectionString))
@@ -39,7 +40,19 @@ namespace projectDydaTomasz.Core
 
         public void DeleteData(string property, string searchTerm)
         {
-            throw new NotImplementedException();
+            var dataname = typeof(T).Name;
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var cmd = new SQLiteCommand(connection))
+                {
+                    cmd.CommandText = $"DELETE FROM {dataname}s WHERE {property} = @searchTerm";
+                    cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+
+                    cmd.ExecuteReader();                    
+                }
+            }
         }
 
         public List<T> GetAllDataList()
@@ -57,23 +70,18 @@ namespace projectDydaTomasz.Core
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            T data = Activator.CreateInstance<T>();
+
+                            foreach (var prop in typeof(T).GetProperties())
                             {
-                                T data = Activator.CreateInstance<T>();
-
-                                if (typeof(T) == typeof(User))
-                                {
-                                    User user = data as User;
-                                    user.username = reader["username"].ToString();
-                                    user.passwordHash = reader["passwordHash"].ToString();
-                                    user.email = reader["email"].ToString();
-                                }
-
-                                dataList.Add(data);
+                                prop.SetValue(data, reader[prop.Name]);
                             }
+
+                            dataList.Add(data);
                         }
+
                     }
                 }
             }
@@ -82,7 +90,6 @@ namespace projectDydaTomasz.Core
 
         public T GetFilteredData(string property, string searchingTerm)
         {
-            List<T> dataList = new List<T>();
             var dataname = typeof(T).Name;
 
             using (var connection = new SQLiteConnection(_connectionString))
@@ -98,17 +105,13 @@ namespace projectDydaTomasz.Core
                     {
                         if (reader.Read())
                         {
-
                             T data = Activator.CreateInstance<T>();
 
-                            if (typeof(T) == typeof(User))
+                            foreach (var prop in typeof(T).GetProperties())
                             {
-                                User user = data as User;
-                                user.username = reader["username"].ToString();
-                                user.passwordHash = reader["passwordHash"].ToString();
-                                user.email = reader["email"].ToString();
-
+                                prop.SetValue(data, reader[prop.Name]);
                             }
+
                             return data;
 
                         }
@@ -121,7 +124,7 @@ namespace projectDydaTomasz.Core
         public List<T> GetFilteredDataList(string property, string searchingTerm)
         {
             List<T> dataList = new List<T>();
-            var dataname = typeof(T).Name;
+            var dataType = typeof(T).Name;
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -129,36 +132,32 @@ namespace projectDydaTomasz.Core
 
                 using (var cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = $"SELECT * FROM {dataname}s WHERE {property} = {searchingTerm}";
+                    cmd.CommandText = $"SELECT * FROM {dataType}s WHERE {property} = @searchingTerm";
+                    cmd.Parameters.AddWithValue("@searchingTerm", searchingTerm);
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            T data = Activator.CreateInstance<T>();
+
+                            foreach (var prop in typeof(T).GetProperties())
                             {
-                                T data = Activator.CreateInstance<T>();
-
-                                if (typeof(T) == typeof(User))
-                                {
-                                    User user = data as User;
-                                    user.username = reader["username"].ToString();
-                                    user.passwordHash = reader["passwordHash"].ToString();
-                                    user.email = reader["email"].ToString();
-                                }
-
-                                dataList.Add(data);
+                                prop.SetValue(data, reader[prop.Name]);
                             }
+
+                            dataList.Add(data);
                         }
                     }
                 }
             }
-            return null;
-        } //to check
+            return dataList;
+        }
 
         public void UpdateData(string property, string searchTerm, T updatingData)
         {
-            var dataname = typeof(T).Name;
+            var dataType = typeof(T).Name;
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
@@ -168,45 +167,13 @@ namespace projectDydaTomasz.Core
                     var properties = updatingData.GetType().GetProperties();
                     string setValues = string.Join(", ", properties.Select(prop => $"{prop.Name} = @{prop.Name}"));
 
-                    cmd.CommandText = $"UPDATE {dataname}s SET {setValues} WHERE {property} = @searchTerm";
+                    cmd.CommandText = $"UPDATE {dataType}s SET {setValues} WHERE {property} = @{searchTerm}";
 
                     foreach (var prop in properties)
                     {
                         cmd.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(updatingData));
                     }
-
-                    cmd.Parameters.AddWithValue($"@{searchTerm}", properties.First(prop => prop.Name == property)?.GetValue(updatingData));
-
                     cmd.ExecuteNonQuery();
-
-                    //var objectProperties = typeof(T).GetProperties(); // zwraca wlascwiosci obiektu T
-                    //foreach (var prop in objectProperties)
-                    //{
-                    //    Console.WriteLine(prop);
-                    //}
-
-                    //using (var reader = cmd.ExecuteReader())
-                    //{
-                    //    if (reader.Read())
-                    //    {
-                    //        T data = Activator.CreateInstance<T>();
-                                                  
-                    //        if(typeof(T) == typeof(User))
-                    //        {
-                                
-                    //        }
-
-                    //        foreach (var prop in objectProperties)
-                    //        {
-                    //            var newValue = prop.GetValue(updatingData);
-                    //            prop.SetValue(, newValue);
-                    //        }
-                    //        User user = data as User;
-                    //        user.username = reader["username"].ToString();
-                    //        user.passwordHash = reader["passwordHash"].ToString();
-                    //        user.email = reader["email"].ToString();
-                    //    }
-                    //}
                 }
             }
         }

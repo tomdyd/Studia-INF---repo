@@ -1,0 +1,45 @@
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.AssemblyReference.cache
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfoInputs.cache
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfo.cs
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.CoreCompileInputs.cache
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.exe
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.deps.json
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.runtimeconfig.json
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.dll
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.pdb
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.dll
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\refint\mehcanizmLogowania.dll
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.pdb
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.genruntimeconfig.cache
+C:\Users\Tomek\Documents\masterFolder\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\ref\mehcanizmLogowania.dll
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.exe
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.deps.json
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.runtimeconfig.json
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.dll
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.pdb
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.AssemblyReference.cache
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfoInputs.cache
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfo.cs
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.CoreCompileInputs.cache
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.dll
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\refint\mehcanizmLogowania.dll
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.pdb
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.genruntimeconfig.cache
+D:\Dane\gitRepository\mehcanizmLogowania\mehcanizmLogowania\obj\Debug\net6.0\ref\mehcanizmLogowania.dll
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.exe
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.deps.json
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.runtimeconfig.json
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.dll
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\bin\Debug\net6.0\mehcanizmLogowania.pdb
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.AssemblyReference.cache
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfoInputs.cache
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.AssemblyInfo.cs
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.csproj.CoreCompileInputs.cache
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.dll
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\refint\mehcanizmLogowania.dll
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.pdb
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\mehcanizmLogowania.genruntimeconfig.cache
+D:\Dane\Studia INF\Semestr II\Programowanie II\praceDomowe\pracaDomowa2_Tomasz_Dyda\mehcanizmLogowania\obj\Debug\net6.0\ref\mehcanizmLogowania.dll
