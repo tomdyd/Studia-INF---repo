@@ -285,8 +285,14 @@ namespace projectDydaTomasz
                                                 case 4:
                                                     string username = "";
                                                     string paulina = "";
-                                                    User user = new User();
-                                                    _userSqlClient.UpdateData(username, paulina, user);
+                                                    User user = new User()
+                                                    {
+                                                        userId = "6aca476a-cb69-4ec5-aa-64b73c8ad275616c",
+                                                        username = "TOMEK",
+                                                        passwordHash = "TOMEK",
+                                                        email = "TOMEK@WP.PL"
+                                                    };
+                                                    _userSqlClient.UpdateData("userId", $"{user.userId}", user);
                                                     _console.ReadLine();
                                                     break;
                                             }

@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using SharpCompress.Common;
 using System.Data.Entity;
 using System.Data.SQLite;
 using System.Reflection.Metadata;
@@ -138,8 +139,6 @@ namespace projectDydaTomasz.Core
                             {
                                 T data = Activator.CreateInstance<T>();
 
-                                MapDataFromReader()
-
                                 if (typeof(T) == typeof(User))
                                 {
                                     User user = data as User;
@@ -166,37 +165,48 @@ namespace projectDydaTomasz.Core
 
                 using (var cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = $"UPDATE {dataname}s WHERE {property} = @searchTerm";
-                    cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+                    var properties = updatingData.GetType().GetProperties();
+                    string setValues = string.Join(", ", properties.Select(prop => $"{prop.Name} = @{prop.Name}"));
 
-                    var objectProperties = typeof(T).GetProperties(); // zwraca wlascwiosci obiektu T
-                    foreach (var prop in objectProperties)
+                    cmd.CommandText = $"UPDATE {dataname}s SET {setValues} WHERE {property} = @searchTerm";
+
+                    foreach (var prop in properties)
                     {
-                        Console.WriteLine(prop);
+                        cmd.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(updatingData));
                     }
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            T data = Activator.CreateInstance<T>();
+                    cmd.Parameters.AddWithValue($"@{searchTerm}", properties.First(prop => prop.Name == property)?.GetValue(updatingData));
+
+                    cmd.ExecuteNonQuery();
+
+                    //var objectProperties = typeof(T).GetProperties(); // zwraca wlascwiosci obiektu T
+                    //foreach (var prop in objectProperties)
+                    //{
+                    //    Console.WriteLine(prop);
+                    //}
+
+                    //using (var reader = cmd.ExecuteReader())
+                    //{
+                    //    if (reader.Read())
+                    //    {
+                    //        T data = Activator.CreateInstance<T>();
                                                   
-                            if(typeof(T) == typeof(User))
-                            {
+                    //        if(typeof(T) == typeof(User))
+                    //        {
                                 
-                            }
+                    //        }
 
-                            foreach (var prop in objectProperties)
-                            {
-                                var newValue = prop.GetValue(updatingData);
-                                prop.SetValue(, newValue);
-                            }
-                            User user = data as User;
-                            user.username = reader["username"].ToString();
-                            user.passwordHash = reader["passwordHash"].ToString();
-                            user.email = reader["email"].ToString();
-                        }
-                    }
+                    //        foreach (var prop in objectProperties)
+                    //        {
+                    //            var newValue = prop.GetValue(updatingData);
+                    //            prop.SetValue(, newValue);
+                    //        }
+                    //        User user = data as User;
+                    //        user.username = reader["username"].ToString();
+                    //        user.passwordHash = reader["passwordHash"].ToString();
+                    //        user.email = reader["email"].ToString();
+                    //    }
+                    //}
                 }
             }
         }
