@@ -14,7 +14,6 @@ namespace projectDydaTomasz.Core.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string carId { get; set; }
-        public int carNumber { get; set; }
         public string carBrand { get; set; }
         public string carModel { get; set; }
         public string carProductionYear{ get; set; }

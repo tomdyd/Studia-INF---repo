@@ -1,12 +1,6 @@
 ﻿using projectDydaTomasz.Core.Interfaces;
 using projectDydaTomasz.Core.Models;
 using projectDydaTomaszCore.Interfaces;
-using projectDydaTomaszCore.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projectDydaTomasz.Core.Services
 {

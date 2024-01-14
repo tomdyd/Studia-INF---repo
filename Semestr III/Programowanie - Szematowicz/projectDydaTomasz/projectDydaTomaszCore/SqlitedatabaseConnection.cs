@@ -8,7 +8,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SQLite;
+using System.Reflection;
 using System.Reflection.Metadata;
+using System.Text.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace projectDydaTomasz.Core
@@ -21,10 +23,17 @@ namespace projectDydaTomasz.Core
         {
             var tableName = typeof(T).Name; 
             var properties = item.GetType().GetProperties().ToArray();
-            var setValues = string.Join(", ", properties.Select(prop => prop.Name));
-            var setValues1 = "@" + string.Join(", @", properties.Select(prop => prop.Name));
 
-            setValues1 = setValues1.Remove(0, 8);
+            var columnNameWithoutPrefix = string.Join(", ", properties.Select(prop => prop.Name));
+            string columnNameWithPrefixes = "";
+
+            var valuesString = string.Join($", @{columnNameWithPrefixes}", properties.Select(prop => prop.Name));
+
+            var valuesArray = valuesString.Split(' ');
+            var columnNamesWithPrefixesArray = new string[valuesArray.Length - 1];
+
+            Array.Copy(valuesArray, 1, columnNamesWithPrefixesArray, 0, columnNamesWithPrefixesArray.Length); //kopiujemy tablice bez pierwszego elementu ktorym zawsze jest objectID
+            columnNameWithPrefixes = string.Join(" ", columnNamesWithPrefixesArray);
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -33,7 +42,10 @@ namespace projectDydaTomasz.Core
                 using (var cmd = new SQLiteCommand(connection))
                 {
                     var idGenerator = "lower(hex(randomblob(4))) || lower(hex(randomblob(2))) || '4' || substr(lower(hex(randomblob(2))),2) || 'a' || substr('89ab',abs(random()) % 4 + 1,1) || '6' || substr(lower(hex(randomblob(2))),2) || lower(hex(randomblob(6)))";
-                    cmd.CommandText = $"INSERT INTO {tableName}s ({setValues}) VALUES ({idGenerator}, {setValues1})";
+                    cmd.CommandText = $"INSERT INTO {tableName}s ({columnNameWithoutPrefix}) VALUES ({idGenerator}, {columnNameWithPrefixes})";
+
+                    var query = $"INSERT INTO cars ({columnNameWithoutPrefix}) VALUES ({idGenerator}, {columnNameWithPrefixes})";
+
                     foreach (var property in typeof(T).GetProperties())
                     {
                         cmd.Parameters.AddWithValue($"@{property.Name}", property.GetValue(item));
