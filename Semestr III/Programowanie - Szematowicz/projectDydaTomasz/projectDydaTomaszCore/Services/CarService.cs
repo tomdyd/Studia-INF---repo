@@ -18,23 +18,21 @@ namespace projectDydaTomasz.Core.Services
         {
             _carRepository = carService;
         }
+        public void CreateCar(Car newCar)
+        {
+            _carRepository.AddToDb(newCar);
+        }
 
         public List<Car> GetCars(string searchTerm)
         {
-            var carList = _carRepository.GetFilteredDataList("user.userId", searchTerm);
+            var carList = _carRepository.GetFilteredDataList("carId", searchTerm);
             return carList;
         }
-
-        //public List<Car> GetAllCarsList()
-        //{
-        //    var carList = _carRepository.GetAllDataList();
-        //    return carList;
-        //}
-
         public void UpdateCar(Car updatingCar)
         {
             _carRepository.UpdateData("carId", updatingCar.carId, updatingCar);
         }
+
 
         public void DeleteCar(string searchTerm)
         {

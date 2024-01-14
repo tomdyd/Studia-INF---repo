@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using projectDydaTomasz.Core.Interfaces;
+using projectDydaTomasz.Core.Models;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
 
@@ -96,5 +97,10 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnectionExtended<T>
         var filter = Builders<T>.Filter.Eq(property, searchTerm);
         var collection = GetCollection(_collectionName);
         collection.DeleteOne(filter);
+    }
+
+    List<Car> IDatabaseConnection<T>.GetFilteredDataList(string property, string searchingTerm)
+    {
+        throw new NotImplementedException();
     }
 }

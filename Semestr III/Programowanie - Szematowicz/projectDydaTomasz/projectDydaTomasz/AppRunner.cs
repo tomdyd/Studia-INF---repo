@@ -3,6 +3,7 @@ using projectDydaTomasz.Core.Models;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using ZstdSharp.Unsafe;
 
 namespace projectDydaTomasz
 {
@@ -94,8 +95,17 @@ namespace projectDydaTomasz
                                                         {
                                                             case 1:
                                                                 var numberOfCars = _carMongoService.GetCars(loggedUser.userId);
-                                                                var newCar = CreateCar(numberOfCars, loggedUser);
-                                                                _carMongoClient.AddToDb(newCar);
+                                                                var newCar = new Car()
+                                                                {
+                                                                    carNumber = numberOfCars.Count() + 1,
+                                                                    carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
+                                                                    carModel = _console.GetDataFromUser("Podaj model samochodu: "),
+                                                                    carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
+                                                                    engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
+                                                                    user = loggedUser
+                                                                };
+                                                                _carMongoService.CreateCar(newCar);
+                                                                _console.ReadLine();
 
                                                                 break;
 
@@ -275,6 +285,63 @@ namespace projectDydaTomasz
                                             switch(res)
                                             {
                                                 case 1:
+                                                    bool runCarMenu = true;
+
+                                                    while (runCarMenu)
+                                                    {
+                                                        _console.Clear();
+                                                        _menu.carMenu();
+                                                        res = _console.GetResponseFromUser();
+
+                                                        switch(res)
+                                                        {
+                                                            case 1:
+                                                                var numberOfCars = _carSqlService.GetCars(loggedUser.userId);
+                                                                var newCar = new Car()
+                                                                {
+                                                                    carNumber = numberOfCars.Count() + 1,
+                                                                    carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
+                                                                    carModel = _console.GetDataFromUser("Podaj model samochodu: "),
+                                                                    carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
+                                                                    engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
+                                                                    user = loggedUser
+                                                                };
+                                                                _carSqlService.CreateCar(newCar);
+                                                                _console.ReadLine();
+                                                                break;
+
+                                                            case 2:
+                                                                var list = _carSqlService.GetCars("1");
+                                                                foreach (var car in list)
+                                                                {
+                                                                    _console.WriteLine(
+                                                                        $"{car.carNumber}." +
+                                                                        $" Marka: {car.carBrand}," +
+                                                                        $" model: {car.carModel}," +
+                                                                        $" rok produkcji: {car.carProductionYear}, " +
+                                                                        $"pojemność silnika: {car.engineCapacity}");
+                                                                }
+
+                                                                _console.ReadLine();
+                                                                break;
+
+                                                            case 3:
+
+                                                                break;
+
+                                                            case 4:
+
+                                                                break;
+
+                                                            case 5:
+
+                                                                break;
+
+                                                            case 6:
+                                                                runCarMenu = false;
+                                                                break;
+                                                        }
+                                                    }
                                                     break;
                                                 case 2:
                                                     break;
@@ -292,6 +359,7 @@ namespace projectDydaTomasz
                                 case 2:
                                     var sqlUser = new User()
                                     {
+                                        userId = "004371db-c3c3-49ab-a9-64c10592d41718f7",
                                         username = _console.GetDataFromUser("Podaj login: "),
                                         passwordHash = _console.GetPasswordFromUser(),
                                         email = _console.GetDataFromUser("Podaj adres email: ")
@@ -320,21 +388,6 @@ namespace projectDydaTomasz
                         break;
                 }
             }
-        }
-
-        private Car CreateCar(List<Car> numberOfCars, User loggedUser)
-        {
-            var newCar = new Car()
-            {
-                carNumber = numberOfCars.Count() + 1,
-                carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
-                carModel = _console.GetDataFromUser("Podaj model samochodu: "),
-                carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
-                engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
-                user = loggedUser
-            };
-
-            return newCar;
-        }
+        }        
     }
 }
