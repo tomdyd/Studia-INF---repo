@@ -8,7 +8,7 @@ namespace projectDydaTomaszCore.Interfaces
     {
         public void AddToDb(T input);
         public T GetFilteredData(string property, string searchingTerm);
-        public List<Car> GetFilteredDataList(string property, string searchingTerm);
+        public List<T> GetFilteredDataList(string property, string searchingTerm);
         public List<T> GetAllDataList();
         public void UpdateData(string property, string searchTerm, T updatingData);
         public void DeleteData(string property, string searchTerm);

@@ -11,7 +11,7 @@ namespace projectDydaTomasz.Core.Interfaces
     public interface ICarService
     {
         public void CreateCar(Car newCar);
-        public List<Car> GetCars(string searchTerm);
+        public List<Car> GetCars(string property, string searchTerm);
         public void UpdateCar(Car updatingCar);
         public void DeleteCar(string searchTerm);
     }

@@ -23,9 +23,9 @@ namespace projectDydaTomasz.Core.Services
             _carRepository.AddToDb(newCar);
         }
 
-        public List<Car> GetCars(string searchTerm)
+        public List<Car> GetCars(string property, string searchTerm)
         {
-            var carList = _carRepository.GetFilteredDataList("carId", searchTerm);
+            var carList = _carRepository.GetFilteredDataList(property, searchTerm);
             return carList;
         }
         public void UpdateCar(Car updatingCar)

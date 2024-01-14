@@ -94,7 +94,7 @@ namespace projectDydaTomasz
                                                         switch (res)
                                                         {
                                                             case 1:
-                                                                var numberOfCars = _carMongoService.GetCars(loggedUser.userId);
+                                                                var numberOfCars = _carMongoService.GetCars("userId", loggedUser.userId);
                                                                 var newCar = new Car()
                                                                 {
                                                                     carNumber = numberOfCars.Count() + 1,
@@ -110,7 +110,7 @@ namespace projectDydaTomasz
                                                                 break;
 
                                                             case 2:
-                                                                var carList = _carMongoService.GetCars(loggedUser.userId);
+                                                                var carList = _carMongoService.GetCars("userId", loggedUser.userId);
                                                                 foreach (var car in carList)
                                                                 {
                                                                     _console.WriteLine(
@@ -125,7 +125,7 @@ namespace projectDydaTomasz
 
                                                             case 3:
                                                                 var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                carList = _carMongoService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars("userId",loggedUser.userId);
                                                                 foreach (var car in carList)
                                                                 {
                                                                     if (car.carBrand.ToLower() == searchTerm.ToLower())
@@ -143,7 +143,7 @@ namespace projectDydaTomasz
                                                             case 4:
                                                                 _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
                                                                 var carNumber = _console.GetResponseFromUser();
-                                                                carList = _carMongoService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars("userId", loggedUser.userId);
 
                                                                 var updatingCar = carList.Find(x => x.carNumber == carNumber);
                                                                 if (updatingCar != null)
@@ -170,7 +170,7 @@ namespace projectDydaTomasz
                                                             case 5:
                                                                 _console.Write("Podaj numer samochodu który chcesz usunąć: ");
                                                                 carNumber = _console.GetResponseFromUser();
-                                                                carList = _carMongoService.GetCars(loggedUser.userId);
+                                                                carList = _carMongoService.GetCars("userId", loggedUser.userId);
 
                                                                 var deletingCar = carList.Find(x => x.carNumber == carNumber);
                                                                 if (deletingCar != null)
@@ -296,10 +296,11 @@ namespace projectDydaTomasz
                                                         switch(res)
                                                         {
                                                             case 1:
-                                                                var numberOfCars = _carSqlService.GetCars(loggedUser.userId);
+                                                                Console.WriteLine($"SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId WHERE user = '{loggedUser.userId}'");
+                                                                var numberOfCars = 1;/* _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE Users.userId = @{loggedUser.userId}");*/
                                                                 var newCar = new Car()
                                                                 {
-                                                                    carNumber = numberOfCars.Count() + 1,
+                                                                    carNumber = numberOfCars + 1,
                                                                     carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
                                                                     carModel = _console.GetDataFromUser("Podaj model samochodu: "),
                                                                     carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
@@ -311,7 +312,7 @@ namespace projectDydaTomasz
                                                                 break;
 
                                                             case 2:
-                                                                var list = _carSqlService.GetCars("1");
+                                                                var list = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE user = '{loggedUser.userId}'");
                                                                 foreach (var car in list)
                                                                 {
                                                                     _console.WriteLine(
@@ -319,7 +320,11 @@ namespace projectDydaTomasz
                                                                         $" Marka: {car.carBrand}," +
                                                                         $" model: {car.carModel}," +
                                                                         $" rok produkcji: {car.carProductionYear}, " +
-                                                                        $"pojemność silnika: {car.engineCapacity}");
+                                                                        $"pojemność silnika: {car.engineCapacity}," +
+                                                                        $"userId: {car.user.userId}, " +
+                                                                        $"username: {car.user.username}, " +
+                                                                        $"password: {car.user.passwordHash}, " +
+                                                                        $"email: {car.user.email}");
                                                                 }
 
                                                                 _console.ReadLine();

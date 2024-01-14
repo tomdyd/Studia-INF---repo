@@ -99,8 +99,4 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnectionExtended<T>
         collection.DeleteOne(filter);
     }
 
-    List<Car> IDatabaseConnection<T>.GetFilteredDataList(string property, string searchingTerm)
-    {
-        throw new NotImplementedException();
-    }
 }
