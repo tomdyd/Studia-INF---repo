@@ -28,7 +28,7 @@ namespace projectDydaTomasz
             ICarService carSqlService = new CarService(carSqlClient);
             IApartmentService apartmentSqlService = new ApartmentService(apartmentSqlClient);
 
-            var appRunner = new AppRunner(menu, console, userMongoClient, carMongoClient, userMongoService, carMongoService, apartmentMongoService, userSqlService, carSqlService, apartmentSqlService);
+            var appRunner = new AppRunner(menu, console, userMongoClient, carMongoClient, apartmentMongoClient, userMongoService, carMongoService, apartmentMongoService, userSqlService, carSqlService, apartmentSqlService);
             appRunner.StartApp();            
         }
     }

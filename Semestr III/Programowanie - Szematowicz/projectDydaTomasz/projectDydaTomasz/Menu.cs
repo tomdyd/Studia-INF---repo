@@ -41,7 +41,7 @@ namespace projectDydaTomasz
         public void apartmentMenu()
         {
             Console.WriteLine("1. Dodaj nowe mieszkanie");
-            Console.WriteLine("2. Wczytaj swoje mieszkania");
+            Console.WriteLine("2. Wczytaj listę swoich mieszkań");
             Console.WriteLine("3. Zaktualizuj swój mieszkanie");
             Console.WriteLine("4. Usuń swój mieszkanie");
             Console.WriteLine("5. Wróć");
