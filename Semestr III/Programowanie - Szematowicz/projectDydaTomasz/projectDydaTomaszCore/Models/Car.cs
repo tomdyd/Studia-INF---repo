@@ -19,6 +19,6 @@ namespace projectDydaTomasz.Core.Models
         public string carModel { get; set; }
         public string carProductionYear{ get; set; }
         public string engineCapacity { get; set; }
-        public User user{ get; set; }
+        public string user{ get; set; }
     }
 }

@@ -3,6 +3,7 @@ using projectDydaTomasz.Core.Models;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
+using System.Diagnostics;
 using ZstdSharp.Unsafe;
 
 namespace projectDydaTomasz
@@ -94,7 +95,7 @@ namespace projectDydaTomasz
                                                         switch (res)
                                                         {
                                                             case 1:
-                                                                var numberOfCars = _carMongoService.GetCars("userId", loggedUser.userId);
+                                                                var numberOfCars = _carMongoService.GetCars("user", loggedUser.userId);
                                                                 var newCar = new Car()
                                                                 {
                                                                     carNumber = numberOfCars.Count() + 1,
@@ -102,15 +103,16 @@ namespace projectDydaTomasz
                                                                     carModel = _console.GetDataFromUser("Podaj model samochodu: "),
                                                                     carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
                                                                     engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
-                                                                    user = loggedUser
+                                                                    user = loggedUser.userId
                                                                 };
                                                                 _carMongoService.CreateCar(newCar);
                                                                 _console.ReadLine();
 
+
                                                                 break;
 
                                                             case 2:
-                                                                var carList = _carMongoService.GetCars("userId", loggedUser.userId);
+                                                                var carList = _carMongoService.GetCars("user", loggedUser.userId);
                                                                 foreach (var car in carList)
                                                                 {
                                                                     _console.WriteLine(
@@ -154,7 +156,7 @@ namespace projectDydaTomasz
                                                                     updatingCar.carModel = _console.GetDataFromUser("Podaj model samochodu: ");
                                                                     updatingCar.carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: ");
                                                                     updatingCar.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
-                                                                    updatingCar.user = loggedUser;
+                                                                    updatingCar.user = loggedUser.userId;
 
                                                                     _carMongoService.UpdateCar(updatingCar);
 
@@ -170,7 +172,7 @@ namespace projectDydaTomasz
                                                             case 5:
                                                                 _console.Write("Podaj numer samochodu który chcesz usunąć: ");
                                                                 carNumber = _console.GetResponseFromUser();
-                                                                carList = _carMongoService.GetCars("userId", loggedUser.userId);
+                                                                carList = _carMongoService.GetCars("user", loggedUser.userId);
 
                                                                 var deletingCar = carList.Find(x => x.carNumber == carNumber);
                                                                 if (deletingCar != null)
@@ -295,50 +297,137 @@ namespace projectDydaTomasz
 
                                                         switch(res)
                                                         {
-                                                            case 1:
-                                                                Console.WriteLine($"SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId WHERE user = '{loggedUser.userId}'");
-                                                                var numberOfCars = 1;/* _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE Users.userId = @{loggedUser.userId}");*/
+                                                            case 1:                                                             
+                                                                var numberOfCars = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE Users.userId = '{loggedUser.userId}'");
+
                                                                 var newCar = new Car()
                                                                 {
-                                                                    carNumber = numberOfCars + 1,
+                                                                    carNumber = numberOfCars.Count + 1,
                                                                     carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
                                                                     carModel = _console.GetDataFromUser("Podaj model samochodu: "),
                                                                     carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
                                                                     engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
-                                                                    user = loggedUser
+                                                                    user = loggedUser.userId
                                                                 };
-                                                                _carSqlService.CreateCar(newCar);
-                                                                _console.ReadLine();
+                                                                try {
+                                                                    _carSqlService.CreateCar(newCar);
+                                                                    _console.WriteLine("Dodano do bazy danych!");
+                                                                    _console.ReadLine();
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    _console.WriteLine(e.Message);
+                                                                    _console.ReadLine();
+                                                                }
+
                                                                 break;
 
                                                             case 2:
-                                                                var list = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE user = '{loggedUser.userId}'");
-                                                                foreach (var car in list)
-                                                                {
-                                                                    _console.WriteLine(
-                                                                        $"{car.carNumber}." +
-                                                                        $" Marka: {car.carBrand}," +
-                                                                        $" model: {car.carModel}," +
-                                                                        $" rok produkcji: {car.carProductionYear}, " +
-                                                                        $"pojemność silnika: {car.engineCapacity}," +
-                                                                        $"userId: {car.user.userId}, " +
-                                                                        $"username: {car.user.username}, " +
-                                                                        $"password: {car.user.passwordHash}, " +
-                                                                        $"email: {car.user.email}");
-                                                                }
+                                                                try {
+                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE user = '{loggedUser.userId}'");
+                                                                    foreach (var car in carList)
+                                                                    {
+                                                                        _console.WriteLine(
+                                                                            $"{car.carNumber}." +
+                                                                            $" Marka: {car.carBrand}," +
+                                                                            $" model: {car.carModel}," +
+                                                                            $" rok produkcji: {car.carProductionYear}," +
+                                                                            $" pojemność silnika: {car.engineCapacity}");
+                                                                    }
 
-                                                                _console.ReadLine();
+                                                                    _console.ReadLine();
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    _console.WriteLine(e.Message);
+                                                                    _console.ReadLine();
+                                                                }
                                                                 break;
 
                                                             case 3:
+                                                                try {
+                                                                    var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
+                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE carBrand = '{searchTerm}'");
+                                                                    foreach (var car in carList)
+                                                                    {
+                                                                        _console.WriteLine(
+                                                                            $"{car.carNumber}." +
+                                                                            $" Marka: {car.carBrand}," +
+                                                                            $" model: {car.carModel}," +
+                                                                            $" rok produkcji: {car.carProductionYear}," +
+                                                                            $" pojemność silnika: {car.engineCapacity}");
+                                                                    }
+
+                                                                    _console.ReadLine();
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    _console.WriteLine(e.Message);
+                                                                    _console.ReadLine();
+                                                                }
 
                                                                 break;
 
                                                             case 4:
+                                                                try
+                                                                {
+                                                                    _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
+                                                                    var carNumber = _console.GetResponseFromUser();
+                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE userId = '{loggedUser.userId}'");
+
+                                                                    var updatingCar = carList.Find(x => x.carNumber == carNumber);
+                                                                    if (updatingCar != null)
+                                                                    {
+                                                                        updatingCar.carId = updatingCar.carId;
+                                                                        updatingCar.carNumber = updatingCar.carNumber;
+                                                                        updatingCar.carBrand = _console.GetDataFromUser("Podaj markę samochodu: ");
+                                                                        updatingCar.carModel = _console.GetDataFromUser("Podaj model samochodu: ");
+                                                                        updatingCar.carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: ");
+                                                                        updatingCar.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
+
+                                                                        _carSqlService.UpdateCar(updatingCar);
+
+                                                                        _console.WriteLine("Dane zaktualizowane!");
+                                                                        _console.ReadLine();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        _console.WriteLine("Nie znaleziono samochodu!");
+                                                                        _console.ReadLine();
+                                                                    }
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    _console.WriteLine(e.Message);
+                                                                    _console.ReadLine();
+                                                                }
 
                                                                 break;
 
                                                             case 5:
+                                                                try {
+                                                                    _console.Write("Podaj numer samochodu który chcesz usunąć: ");
+                                                                    var carNumber = _console.GetResponseFromUser();
+                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId", $"WHERE userId = '{loggedUser.userId}'");
+
+                                                                    var deletingCar = carList.Find(x => x.carNumber == carNumber);
+                                                                    if (deletingCar != null)
+                                                                    {
+                                                                        _carSqlService.DeleteCar(deletingCar.carId);
+                                                                        _console.WriteLine("Samochód został usunięty!");
+                                                                        _console.ReadLine();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        _console.WriteLine("Nie znaleziono samochodu!");
+                                                                        _console.ReadLine();
+                                                                    }
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    _console.WriteLine(e.Message);
+                                                                    _console.ReadLine();
+                                                                }
 
                                                                 break;
 

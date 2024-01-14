@@ -19,8 +19,6 @@ namespace projectDydaTomasz.Core
 
         public void AddToDb(T item)
         {
-            Console.WriteLine(_connectionString);
-
             var tableName = typeof(T).Name; 
             var properties = item.GetType().GetProperties().ToArray();
             var setValues = string.Join(", ", properties.Select(prop => prop.Name));
@@ -39,10 +37,6 @@ namespace projectDydaTomasz.Core
                     foreach (var property in typeof(T).GetProperties())
                     {
                         cmd.Parameters.AddWithValue($"@{property.Name}", property.GetValue(item));
-                        if(property.PropertyType == typeof(User))
-                        {
-                            
-                        }
                     }
 
                     cmd.ExecuteNonQuery();
@@ -247,8 +241,7 @@ namespace projectDydaTomasz.Core
                 {
                     var properties = updatingData.GetType().GetProperties();
                     string setValues = string.Join(", ", properties.Select(prop => $"{prop.Name} = @{prop.Name}"));
-
-                    cmd.CommandText = $"UPDATE {dataType}s SET {setValues} WHERE {property} = @{searchTerm}";
+                    cmd.CommandText = $"UPDATE {dataType}s SET {setValues} WHERE {property} = '{searchTerm}'";
 
                     foreach (var prop in properties)
                     {
