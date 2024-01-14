@@ -21,7 +21,7 @@ namespace projectDydaTomasz.Core
         {
             Console.WriteLine(_connectionString);
 
-            var tableName = typeof(T).Name;
+            var tableName = typeof(T).Name; 
             var properties = item.GetType().GetProperties().ToArray();
             var setValues = string.Join(", ", properties.Select(prop => prop.Name));
             var setValues1 = "@" + string.Join(", @", properties.Select(prop => prop.Name));
