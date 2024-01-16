@@ -70,7 +70,7 @@ namespace projectDydaTomasz
                             switch (res)
                             {
                                 case 1:
-                                    _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
+                                    _userMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "user");
                                     var login = _console.GetLoginFromUser();
                                     var password = _console.GetPasswordFromUser();
                                     var loggedUser = _userMongoService.AuthorizeUser(login, password);
@@ -87,7 +87,7 @@ namespace projectDydaTomasz
                                             switch (res)
                                             {
                                                 case 1:
-                                                    _carMongoClient.Connect("mongodb://localhost:27017/", "test", "car");
+                                                    _carMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "car");
                                                     bool runCarMenu = true;
 
                                                     while (runCarMenu)
@@ -148,15 +148,19 @@ namespace projectDydaTomasz
                                                                 try
                                                                 {
                                                                     var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                    var carList = _carMongoService.GetCars("carBrand", searchTerm);
+                                                                    var carList = _carMongoService.GetCars("userId", loggedUser.userId);
+
                                                                     for (int i = 0; i < carList.Count; i++)
                                                                     {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
+                                                                        if (carList[i].carBrand == searchTerm)
+                                                                        {
+                                                                            _console.WriteLine(
+                                                                                $"{i + 1}." +
+                                                                                $" Marka: {carList[i].carBrand}," +
+                                                                                $" model: {carList[i].carModel}," +
+                                                                                $" rok produkcji: {carList[i].carProductionYear}," +
+                                                                                $" pojemność silnika: {carList[i].engineCapacity}");
+                                                                        }
                                                                     }
                                                                     _console.ReadLine();
                                                                 }
@@ -238,6 +242,7 @@ namespace projectDydaTomasz
 
                                                                         _carMongoService.DeleteCar(deletingCar.carId);
                                                                         _console.WriteLine("Samochód został usunięty!");
+                                                                        _console.ReadLine();
                                                                     }
                                                                     else
                                                                     {
@@ -265,7 +270,7 @@ namespace projectDydaTomasz
                                                     break; // wybór kolekcji samochodów
 
                                                 case 2:
-                                                    _apartmentMongoClient.Connect("mongodb://localhost:27017/", "test", "apartment");
+                                                    _apartmentMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "apartment");
                                                     bool runApartmentMenu = true;
 
                                                     while (runApartmentMenu)
@@ -436,7 +441,7 @@ namespace projectDydaTomasz
                                         passwordHash = _console.GetPasswordFromUser(),
                                         email = _console.GetDataFromUser("Podaj adres email: ")
                                     };
-                                    _userMongoClient.Connect("mongodb://localhost:27017/", "test", "user");
+                                    _userMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "user");
                                     _userMongoService.RegisterUser(newUser);
 
                                     break; // rejestracja
@@ -541,15 +546,19 @@ namespace projectDydaTomasz
                                                                 try
                                                                 {
                                                                     var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE carBrand = '{searchTerm}'");
+                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");                                                                   
+
                                                                     for (int i = 0; i < carList.Count; i++)
                                                                     {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
+                                                                        if (carList[i].carBrand == searchTerm)
+                                                                        {
+                                                                            _console.WriteLine(
+                                                                                $"{i + 1}." +
+                                                                                $" Marka: {carList[i].carBrand}," +
+                                                                                $" model: {carList[i].carModel}," +
+                                                                                $" rok produkcji: {carList[i].carProductionYear}," +
+                                                                                $" pojemność silnika: {carList[i].engineCapacity}");
+                                                                        }
                                                                     }
 
                                                                     _console.ReadLine();
@@ -630,7 +639,7 @@ namespace projectDydaTomasz
 
                                                                     if (carNumber <= carList.Count)
                                                                     {
-                                                                        var deletingCar = carList[carNumber];
+                                                                        var deletingCar = carList[carNumber - 1];
 
                                                                         _carSqlService.DeleteCar(deletingCar.carId);
                                                                         _console.WriteLine("Samochód został usunięty!");
