@@ -13,3 +13,18 @@ D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\inte
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.genruntimeconfig.cache
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\ref\interpolacjaNewtona.dll
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.csproj.AssemblyReference.cache
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.exe
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.deps.json
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.runtimeconfig.json
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.dll
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.pdb
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.AssemblyInfoInputs.cache
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.AssemblyInfo.cs
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.csproj.CoreCompileInputs.cache
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.sourcelink.json
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.dll
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\refint\interpolacjaNewtona.dll
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.pdb
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.genruntimeconfig.cache
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\ref\interpolacjaNewtona.dll

@@ -27,3 +27,6 @@ C:\Users\t.dyda\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematow
 C:\Users\t.dyda\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.genruntimeconfig.cache
 D:\Dane\Studia INF - repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\bin\Debug\net7.0\projectDydaTomasz.Core.runtimeconfig.json
 D:\Dane\Studia INF - repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.genruntimeconfig.cache
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.dll
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\refint\projectDydaTomasz.Core.dll
+C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.pdb
