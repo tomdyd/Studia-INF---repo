@@ -1,0 +1,4 @@
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\connectToMongoDbRawMaterials\bin\Release\net8.0\publish\win-x86\connectToMongoDbRawMaterials.pdb
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\connectToMongoDbRawMaterials\bin\Release\net8.0\publish\win-x86\mongocrypt.dll
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\connectToMongoDbRawMaterials\bin\Release\net8.0\publish\win-x86\ConnectToMongoDbRawMaterials.Core.pdb
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\connectToMongoDbRawMaterials\bin\Release\net8.0\publish\win-x86\connectToMongoDbRawMaterials.exe

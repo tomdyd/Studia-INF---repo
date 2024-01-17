@@ -1,0 +1,12 @@
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\bin\Release\net8.0\ConnectToMongoDbRawMaterials.Core.deps.json
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\bin\Release\net8.0\ConnectToMongoDbRawMaterials.Core.dll
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\bin\Release\net8.0\ConnectToMongoDbRawMaterials.Core.pdb
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.csproj.AssemblyReference.cache
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.AssemblyInfoInputs.cache
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.AssemblyInfo.cs
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.csproj.CoreCompileInputs.cache
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.dll
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\refint\ConnectToMongoDbRawMaterials.Core.dll
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ConnectToMongoDbRawMaterials.Core.pdb
+C:\Users\b.ejman\Documents\visual studio projects\connectToMongoDbRawMaterials\ConnectToMongoDbRawMaterials.Core\obj\Release\net8.0\ref\ConnectToMongoDbRawMaterials.Core.dll
