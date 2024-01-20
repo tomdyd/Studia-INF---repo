@@ -1,9 +1,4 @@
 ﻿using interpolacjaNewtona.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace interpolacjaNewtona
 {
@@ -41,7 +36,7 @@ namespace interpolacjaNewtona
                 list.Add(d[i, 0]);
             }
             list.Reverse();
-            list.Add(x[0]); //pierwszy węzeł
+            list.Add(y[0]); //pierwszy węzeł
 
             for (int i = n - 1; i >= 0; i--)
             {

@@ -8,19 +8,24 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\b.ejman\\.nuget\\packages\\": {}
+    "C:\\Users\\Tomek\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\b.ejman\\Documents\\Studia-INF---repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\interpolacjaNewtona.csproj",
+      "projectUniqueName": "D:\\Dane\\Studia INF - repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\interpolacjaNewtona.csproj",
       "projectName": "interpolacjaNewtona",
-      "projectPath": "C:\\Users\\b.ejman\\Documents\\Studia-INF---repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\interpolacjaNewtona.csproj",
-      "packagesPath": "C:\\Users\\b.ejman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\b.ejman\\Documents\\Studia-INF---repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\obj\\",
+      "projectPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\interpolacjaNewtona.csproj",
+      "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
+      "outputPath": "D:\\Dane\\Studia INF - repo\\Semestr III\\Metody numeryczne\\interpolacjaNewtona\\interpolacjaNewtona\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\b.ejman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +33,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

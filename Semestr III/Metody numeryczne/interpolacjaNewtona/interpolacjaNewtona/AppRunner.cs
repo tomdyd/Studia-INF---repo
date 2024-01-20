@@ -1,9 +1,4 @@
 ﻿using interpolacjaNewtona.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace interpolacjaNewtona
 {
@@ -20,40 +15,56 @@ namespace interpolacjaNewtona
 
         public void startApp()
         {
-            Siganture();
-
-            _appConsole.Write("Podaj liczbę węzłów interpolacji: ");
-            var res = int.Parse(_appConsole.ReadLine());
-
-            double[] x = new double[res];
-            double[] y = new double[res];
-
-            for(int i  = 0; i < res; i++)
+            while (true)
             {
-                _appConsole.Write($"Podaj {i + 1} węzeł interpolacji: ");
-                x[i] = double.Parse(_appConsole.ReadLine());                
+                _appConsole.Clear();
+                Siganture();
+                _appConsole.WriteLine("1. Kontynuuj");
+                _appConsole.WriteLine("2. Wyjdź");
+                var res = int.Parse(_appConsole.ReadLine());
+
+                switch (res)
+                {
+                    case 1:
+                        _appConsole.Write("Podaj liczbę węzłów interpolacji: ");
+                        res = int.Parse(_appConsole.ReadLine());
+
+                        double[] x = new double[res];
+                        double[] y = new double[res];
+
+                        for (int i = 0; i < res; i++)
+                        {
+                            _appConsole.Write($"Podaj {i + 1} węzeł interpolacji: ");
+                            x[i] = double.Parse(_appConsole.ReadLine());
+                        }
+
+                        _appConsole.WriteLine("--------------------------------");
+
+                        for (int i = 0; i < res; i++)
+                        {
+                            _appConsole.Write($"Podaj {i + 1} wartość: ");
+                            y[i] = double.Parse(_appConsole.ReadLine());
+                        }
+
+                        _appConsole.WriteLine("--------------------------------");
+
+                        _appConsole.Write("Podaj dla jakiego x mam obliczyć interpolację: ");
+                        double a = double.Parse(_appConsole.ReadLine());
+
+                        var result = _newtonInterpolationAlgorithm.NewtonInterpolation(x, y, a);
+
+                        _appConsole.WriteLine("--------------------------------");
+
+                        _appConsole.WriteLine($"Wartość wielomianu interpolacyjnego dla x = {a} wynosi: {result.Last()}");
+
+                        _appConsole.WriteLine("Kliknij przycisk aby kontynuować...");
+                        _appConsole.ReadLine();
+                        break;
+
+                    case 2:
+                        return;
+                }
             }
-
-            _appConsole.WriteLine("--------------------------------");
-
-            for(int i = 0 ; i < res ; i++)
-            {
-                _appConsole.Write($"Podaj {i + 1} wartość: ");
-                y[i] = double.Parse(_appConsole.ReadLine());
-            }
-
-            _appConsole.WriteLine("--------------------------------");
-
-            _appConsole.Write("Podaj dla jakiego x mam obliczyć interpolację: ");
-            double a = double.Parse(_appConsole.ReadLine());
-
-            var result = _newtonInterpolationAlgorithm.NewtonInterpolation(x, y, a);
-
-            _appConsole.WriteLine("--------------------------------");
-
-            Console.WriteLine($"Wartość wielomianu interpolacyjnego dla x = {a} wynosi: {result.Last()}");
-
-            Console.ReadLine();
         }
 
         private void Siganture()

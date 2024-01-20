@@ -1,9 +1,4 @@
 ﻿using interpolacjaNewtona.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace interpolacjaNewtona
 {
@@ -28,6 +23,12 @@ namespace interpolacjaNewtona
         public void WriteLine(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public ConsoleKeyInfo ReadKey()
+        {
+            var key = Console.ReadKey();
+            return key;
         }
     }
 }

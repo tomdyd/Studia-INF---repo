@@ -1,7 +1,5 @@
 ﻿using interpolacjaNewtona;
 using interpolacjaNewtona.Interfaces;
-using System;
-using System.Runtime.ExceptionServices;
 
 class Program
 {
