@@ -11,6 +11,11 @@ namespace projectDydaTomasz.Core.Models
         public string surface { get; set; }
         public string cost { get; set; }
         public string street { get; set; }
-        public string user { get; set; }        
+        public string user { get; set; }
+
+        public override string ToString()
+        {
+            return $"Powierzchnia: {surface}, adres: {street}, koszt: {cost}";
+        }
     }
 }

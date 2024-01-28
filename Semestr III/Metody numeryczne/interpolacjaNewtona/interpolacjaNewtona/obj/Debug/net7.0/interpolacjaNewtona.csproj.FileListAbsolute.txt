@@ -12,7 +12,6 @@ D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\inte
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.pdb
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.genruntimeconfig.cache
 D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\ref\interpolacjaNewtona.dll
-D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.csproj.AssemblyReference.cache
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.exe
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.deps.json
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Debug\net7.0\interpolacjaNewtona.runtimeconfig.json
@@ -28,3 +27,4 @@ C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\inter
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.pdb
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.genruntimeconfig.cache
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\ref\interpolacjaNewtona.dll
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\obj\Debug\net7.0\interpolacjaNewtona.csproj.AssemblyReference.cache

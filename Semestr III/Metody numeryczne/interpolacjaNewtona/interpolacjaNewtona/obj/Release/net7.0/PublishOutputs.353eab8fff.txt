@@ -1,0 +1,5 @@
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\interpolacjaNewtona.exe
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\interpolacjaNewtona.dll
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\interpolacjaNewtona.deps.json
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\interpolacjaNewtona.runtimeconfig.json
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\interpolacjaNewtona.pdb

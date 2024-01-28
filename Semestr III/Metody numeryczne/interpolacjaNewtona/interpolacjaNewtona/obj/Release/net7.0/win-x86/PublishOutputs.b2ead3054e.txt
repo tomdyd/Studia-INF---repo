@@ -1,0 +1,2 @@
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\win-x86\interpolacjaNewtona.pdb
+D:\Dane\Studia INF - repo\Semestr III\Metody numeryczne\interpolacjaNewtona\interpolacjaNewtona\bin\Release\net7.0\publish\win-x86\interpolacjaNewtona.exe

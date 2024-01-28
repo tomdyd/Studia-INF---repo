@@ -7,5 +7,9 @@
         string ReadLine();
         ConsoleKeyInfo ReadKey();
         void Clear();
+        int getIntFromUser(string msg);
+        double getDoubleFromUser(string msg);
+        void Siganture();
+        
     }
 }

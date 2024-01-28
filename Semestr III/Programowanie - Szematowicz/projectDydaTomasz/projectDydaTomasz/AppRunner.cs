@@ -1,11 +1,7 @@
 ﻿using projectDydaTomasz.Core.Interfaces;
 using projectDydaTomasz.Core.Models;
 using projectDydaTomasz.Interfaces;
-using projectDydaTomaszCore.Interfaces;
 using projectDydaTomaszCore.Models;
-using System.Diagnostics;
-using System.IO;
-using ZstdSharp.Unsafe;
 
 namespace projectDydaTomasz
 {
@@ -70,6 +66,7 @@ namespace projectDydaTomasz
                             switch (res)
                             {
                                 case 1:
+                                    _console.Clear();
                                     _userMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "user");
                                     var login = _console.GetLoginFromUser();
                                     var password = _console.GetPasswordFromUser();
@@ -78,361 +75,10 @@ namespace projectDydaTomasz
                                     if (loggedUser != null)
                                     {
                                         bool runCollectionsMenu = true;
-                                        while (runCollectionsMenu)
-                                        {
-                                            _console.Clear();
-                                            _menu.CollectionsMenu();
-                                            res = _console.GetResponseFromUser();
 
-                                            switch (res)
-                                            {
-                                                case 1:
-                                                    _carMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "car");
-                                                    bool runCarMenu = true;
-
-                                                    while (runCarMenu)
-                                                    {
-                                                        _console.Clear();
-                                                        _menu.carMenu();
-                                                        res = _console.GetResponseFromUser();
-
-                                                        switch (res)
-                                                        {
-                                                            case 1:
-                                                                try
-                                                                {
-                                                                    var newCar = new Car()
-                                                                    {
-                                                                        carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
-                                                                        carModel = _console.GetDataFromUser("Podaj model samochodu: "),
-                                                                        carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
-                                                                        engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
-                                                                        user = loggedUser.userId
-                                                                    };
-                                                                    _carMongoService.CreateCar(newCar);
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                };
-
-
-                                                                break; // Dodawanie samochodu do bazy danych MongoDb
-
-                                                            case 2:
-                                                                try
-                                                                {
-                                                                    var carList = _carMongoService.GetCars("user", loggedUser.userId);
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Wczytywanie wszystkich samochodów użytkownika z bazy MognoDb
-
-                                                            case 3:
-                                                                try
-                                                                {
-                                                                    var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                    var carList = _carMongoService.GetCars("userId", loggedUser.userId);
-
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        if (carList[i].carBrand == searchTerm)
-                                                                        {
-                                                                            _console.WriteLine(
-                                                                                $"{i + 1}." +
-                                                                                $" Marka: {carList[i].carBrand}," +
-                                                                                $" model: {carList[i].carModel}," +
-                                                                                $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                                $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                        }
-                                                                    }
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-                                                                break; // Wczytywanie wszystkich samochodów użytkownika z bazy MongoDb i filtrowanie po marce
-
-                                                            case 4:
-                                                                try
-                                                                {
-                                                                    var carList = _carMongoService.GetCars("user", loggedUser.userId);
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                                 $"{i + 1}." +
-                                                                                 $" Marka: {carList[i].carBrand}," +
-                                                                                 $" model: {carList[i].carModel}," +
-                                                                                 $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                                 $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
-
-                                                                    _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
-                                                                    var carNumber = _console.GetResponseFromUser();
-
-                                                                    if (carNumber <= carList.Count)
-                                                                    {
-                                                                        var updatingCar = carList[carNumber - 1];
-
-                                                                        updatingCar.carId = updatingCar.carId;
-                                                                        updatingCar.carBrand = _console.GetDataFromUser("Podaj markę samochodu: ");
-                                                                        updatingCar.carModel = _console.GetDataFromUser("Podaj model samochodu: ");
-                                                                        updatingCar.carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: ");
-                                                                        updatingCar.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
-                                                                        updatingCar.user = loggedUser.userId;
-
-                                                                        _carMongoService.UpdateCar(updatingCar);
-
-                                                                        _console.WriteLine("Dane zaktualizowane!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono samochodu!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Aktualizacja samochodów użytkownika w bazie MongoDb
-
-                                                            case 5:
-                                                                try
-                                                                {
-                                                                    var carList = _carMongoService.GetCars("user", loggedUser.userId);
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                                 $"{i + 1}." +
-                                                                                 $" Marka: {carList[i].carBrand}," +
-                                                                                 $" model: {carList[i].carModel}," +
-                                                                                 $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                                 $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
-
-                                                                    _console.Write("Podaj numer samochodu który chcesz usunąć: ");
-                                                                    var carNumber = _console.GetResponseFromUser();
-                                                                    carList = _carMongoService.GetCars("user", loggedUser.userId);
-
-                                                                    if (carNumber <= carList.Count)
-                                                                    {
-                                                                        var deletingCar = carList[carNumber - 1];
-
-                                                                        _carMongoService.DeleteCar(deletingCar.carId);
-                                                                        _console.WriteLine("Samochód został usunięty!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono samochodu!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Usuwanie samochodów użytkownika z bazy MongoDb
-
-                                                            case 6:
-                                                                runCarMenu = false;
-                                                                break; // Powrót
-
-                                                            default:
-                                                                Console.WriteLine("Nie ma takiej opcji");
-                                                                break;
-                                                        }
-                                                    }
-                                                    break; // wybór kolekcji samochodów
-
-                                                case 2:
-                                                    _apartmentMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "apartment");
-                                                    bool runApartmentMenu = true;
-
-                                                    while (runApartmentMenu)
-                                                    {
-                                                        _console.Clear();
-                                                        _menu.apartmentMenu();
-                                                        res = _console.GetResponseFromUser();
-
-                                                        switch (res)
-                                                        {
-                                                            case 1:
-                                                                try
-                                                                {
-                                                                    var newApartment = new Apartment()
-                                                                    {
-                                                                        surface = _console.GetDataFromUser("Podaj powierzchnię mieszkania: "),
-                                                                        street = _console.GetDataFromUser("Podaj adres mieszkania: "),
-                                                                        cost = _console.GetDataFromUser("Podaj cenę mieszkania: "),
-                                                                        user = loggedUser.userId
-                                                                    };
-
-                                                                    _apartmentMongoService.CreateApartment(newApartment);
-                                                                    _console.WriteLine("Dodano do bazy danych!");
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                };
-
-                                                                break; // Dodawanie mieszkań do bazy MongoDb
-
-                                                            case 2:
-                                                                try
-                                                                {
-                                                                    var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
-                                                                    for (int i = 0; i < apartmentsList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Powierzchnia mieszkania: {apartmentsList[i].surface}," +
-                                                                            $" Adres mieszkania: {apartmentsList[i].street}," +
-                                                                            $" Cena mieszkania: {apartmentsList[i].cost}");
-                                                                    }
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Wczytywanie mieszkań użytkownika z bazy MongoDb
-
-                                                            case 3:
-                                                                try
-                                                                {
-                                                                    var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
-                                                                    for (int i = 0; i < apartmentsList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Powierzchnia mieszkania: {apartmentsList[i].surface}," +
-                                                                            $" Adres mieszkania: {apartmentsList[i].street}," +
-                                                                            $" Cena mieszkania: {apartmentsList[i].cost}");
-                                                                    }
-
-                                                                    _console.Write("Podaj numer mieszkania które chcesz zaktualizować: ");
-                                                                    var apartmentNumber = _console.GetResponseFromUser();
-
-                                                                    if (apartmentNumber <= apartmentsList.Count)
-                                                                    {
-                                                                        var updatingApartment = apartmentsList[apartmentNumber - 1];
-
-                                                                        updatingApartment.surface = _console.GetDataFromUser("Podaj powierzchnię mieszkania: ");
-                                                                        updatingApartment.street = _console.GetDataFromUser("Podaj adres mieszkania: ");
-                                                                        updatingApartment.cost = _console.GetDataFromUser("Podaj cenę mieszkania: ");
-                                                                        updatingApartment.user = loggedUser.userId;
-
-                                                                        _apartmentMongoService.UpdateApartment(updatingApartment);
-
-                                                                        _console.WriteLine("Dane zaktualizowane!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono mieszkania!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Aktualizacja mieszkań użytkownika w bazie MongoDb
-
-                                                            case 4:
-                                                                try
-                                                                {
-                                                                    var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
-                                                                    for (int i = 0; i < apartmentsList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Powierzchnia mieszkania: {apartmentsList[i].surface}," +
-                                                                            $" Adres mieszkania: {apartmentsList[i].street}," +
-                                                                            $" Cena mieszkania: {apartmentsList[i].cost}");
-                                                                    }
-
-                                                                    _console.Write("Podaj numer mieszkania które chcesz usunąć: ");
-                                                                    var apartmentNumber = _console.GetResponseFromUser();                                                                 
-
-                                                                    if (apartmentNumber <= apartmentsList.Count)
-                                                                    {
-                                                                        var deletingApartment = apartmentsList[apartmentNumber - 1];
-
-                                                                        _apartmentMongoService.DeleteApartment(deletingApartment.apartmentId);
-
-                                                                        _console.WriteLine("Mieszkanie zostało usunięte!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono mieszkania!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Usuwanie mieszkań użytkownika z bazy MongoDb
-
-                                                            case 5:
-                                                                runApartmentMenu = false;
-                                                                break; // Powrót
-
-                                                            default:
-                                                                _console.WriteLine("Nie ma takiej opcji!");
-                                                                _console.ReadLine();
-                                                                break;
-                                                        }
-                                                    }
-                                                    break; // wybór kolekcji mieszkań
-
-                                                case 3:
-                                                    runCollectionsMenu = false;
-                                                    loggedUser = null;
-                                                    break; // powrót
-
-                                                default:
-                                                    Console.WriteLine("Nie ma takiej opcji");
-                                                    break;
-                                            }
-                                        }
+                                        MongoCollectionsMenu(runCollectionsMenu, loggedUser);
                                     }
-                                    break; // logowanie
+                                    break;
 
                                 case 2:
                                     var newUser = new User()
@@ -444,11 +90,11 @@ namespace projectDydaTomasz
                                     _userMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "user");
                                     _userMongoService.RegisterUser(newUser);
 
-                                    break; // rejestracja
+                                    break;
 
                                 case 3:
                                     runLoginMenu = false;
-                                    break; // powrót
+                                    break;
 
                                 default:
                                     _console.WriteLine("Nie ma takiej opcji!");
@@ -456,7 +102,7 @@ namespace projectDydaTomasz
                             }
 
                         }
-                        break; //logowanie do mongoDb
+                        break;
 
                     case 2:
 
@@ -869,5 +515,413 @@ namespace projectDydaTomasz
                 }
             }
         }
+        public void MongoCarMenu(bool runCarMenu, User loggedUser)
+        {
+            while (runCarMenu)
+            {
+                _console.Clear();
+                _menu.carMenu();
+                var res = _console.GetResponseFromUser();
+
+                switch (res)
+                {
+                    case 1:
+
+                        CreateMongoCar(loggedUser);
+
+                        break;
+
+                    case 2:
+
+                        PrintMongoCarsList(loggedUser);
+
+                        break;
+
+                    case 3:
+
+                        PrintFilteredMongoCarsList(loggedUser);
+
+                        break;
+
+                    case 4:
+
+                        UpdateMongoCar(loggedUser);
+
+                        break;
+
+                    case 5:
+                       
+                        DeleteMongoCar(loggedUser);
+
+                        break;
+
+                    case 6:
+                        runCarMenu = false;
+                        break;
+
+                    default:
+                        _console.WriteLine("Nie ma takiej opcji");
+                        break;
+                }
+            }
+        }
+
+        private void MongoApartmentMenu(bool  runApartmentMenu, User loggedUser)
+        {
+            while (runApartmentMenu)
+            {
+                _console.Clear();
+                _menu.apartmentMenu();
+                var res = _console.GetResponseFromUser();
+
+                switch (res)
+                {
+                    case 1:
+                       
+                        CreateMongoApartment(loggedUser);
+
+                        break;
+
+                    case 2:
+                       
+                        PrintMongoApartmentsList(loggedUser);
+
+                        break;
+
+                    case 3:
+                        
+                        UpdateMongoApartment(loggedUser);
+
+                        break; 
+
+                    case 4:
+
+                        DeleteMongoApartment(loggedUser);
+
+                        break; 
+
+                    case 5:
+                        runApartmentMenu = false;
+                        break; 
+
+                    default:
+                        _console.WriteLine("Nie ma takiej opcji!");
+                        _console.ReadLine();
+                        break;
+                }
+            }
+        }
+
+        private void MongoCollectionsMenu(bool runCollectionsMenu, User loggedUser)
+        {
+            while (runCollectionsMenu)
+            {
+                _console.Clear();
+                _menu.CollectionsMenu();
+                var res = _console.GetResponseFromUser();
+
+                switch (res)
+                {
+                    case 1:
+                        _carMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "car");
+                        bool runCarMenu = true;
+
+                        MongoCarMenu(runCarMenu, loggedUser);
+
+                        break; // wybór kolekcji samochodów
+
+                    case 2:
+                        _apartmentMongoClient.Connect("mongodb://localhost:27017/", "dataBase", "apartment");
+                        bool runApartmentMenu = true;
+
+                        MongoApartmentMenu(runApartmentMenu, loggedUser);
+
+                        break; // wybór kolekcji mieszkań
+
+                    case 3:
+                        runCollectionsMenu = false;
+                        loggedUser = null;
+                        break; // powrót
+
+                    default:
+                        _console.WriteLine("Nie ma takiej opcji");
+                        break;
+                }
+            }
+        }
+
+        private void Print<T>(List<T> dataList)
+        {
+            foreach (T item in dataList)
+            {
+                _console.Write($"{dataList.IndexOf(item)+1}. ");
+                _console.WriteLine(item.ToString());
+            }
+        }
+
+        private void DeleteMongoCar(User loggedUser)
+        {
+            try
+            {
+                var carList = _carMongoService.GetCars("user", loggedUser.userId);
+
+                Print(carList);
+
+                _console.Write("Podaj numer samochodu który chcesz usunąć: ");
+                var carNumber = _console.GetResponseFromUser();
+                //carList = _carMongoService.GetCars("user", loggedUser.userId);
+
+                if (carNumber <= carList.Count)
+                {
+                    var deletingCar = carList[carNumber - 1];
+
+                    _carMongoService.DeleteCar(deletingCar.carId);
+                    _console.WriteLine("Samochód został usunięty!");
+                    _console.ReadLine();
+                }
+                else
+                {
+                    _console.WriteLine("Nie znaleziono samochodu!");
+                    _console.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void DeleteMongoApartment(User loggedUser)
+        {
+            try
+            {
+                var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
+
+                Print(apartmentsList);
+
+                _console.Write("Podaj numer mieszkania które chcesz usunąć: ");
+
+                var apartmentNumber = _console.GetResponseFromUser();
+
+                if (apartmentNumber <= apartmentsList.Count)
+                {
+                    var deletingApartment = apartmentsList[apartmentNumber - 1];
+
+                    _apartmentMongoService.DeleteApartment(deletingApartment.apartmentId);
+
+                    _console.WriteLine("Mieszkanie zostało usunięte!");
+                    _console.ReadLine();
+                }
+                else
+                {
+                    _console.WriteLine("Nie znaleziono mieszkania!");
+                    _console.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void CreateMongoCar(User loggedUser)
+        {
+            try
+            {
+                Car newCar = new Car();
+
+                ReadMongoCar(loggedUser, newCar);
+
+                _carMongoService.CreateCar(newCar);
+                _console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            };
+        }
+
+        private void CreateMongoApartment(User loggedUser)
+        {
+            try
+            {
+                var newApartment = new Apartment();
+
+                ReadMongoApartment(loggedUser, newApartment);
+
+                _apartmentMongoService.CreateApartment(newApartment);
+                _console.WriteLine("Dodano do bazy danych!");
+                _console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            };
+        }
+
+        private Car ReadMongoCar(User loggedUser, Car car)
+        {
+            if(car.carId != null)
+            {
+                car.carId = car.carId;
+            }
+            car.carBrand = _console.GetDataFromUser("Podaj markę samochodu: ");
+            car.carModel = _console.GetDataFromUser("Podaj model samochodu: ");
+            car.carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: ");
+            car.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
+            car.user = loggedUser.userId;
+
+            return car;
+        }
+
+        private Apartment ReadMongoApartment(User loggedUser, Apartment apartment)
+        {
+            if(apartment.apartmentId != null)
+            {
+                apartment.apartmentId = apartment.apartmentId;
+            }
+            apartment.surface = _console.GetDataFromUser("Podaj powierzchnię mieszkania: ");
+            apartment.street = _console.GetDataFromUser("Podaj adres mieszkania: ");
+            apartment.cost = _console.GetDataFromUser("Podaj cenę mieszkania: ");
+            apartment.user = loggedUser.userId;
+
+            return apartment;
+        }
+
+        private void PrintMongoCarsList(User loggedUser)
+        {
+            try
+            {
+                var carList = _carMongoService.GetCars("user", loggedUser.userId);
+
+                Print(carList);
+
+                _console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void PrintMongoApartmentsList(User loggedUser)
+        {
+            try
+            {
+                var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
+
+                Print(apartmentsList);
+
+                _console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void PrintFilteredMongoCarsList(User loggedUser)
+        {
+            try
+            {
+                var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
+                var dataList = _carMongoService.GetCars("user", loggedUser.userId);
+                List<Car> carList = new List<Car>();
+
+                foreach(var item in dataList)
+                {
+                    if(item.carBrand == searchTerm)
+                    {
+                        carList.Add(item);
+                    }
+                }
+
+                Print(carList);
+
+                _console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void UpdateMongoCar(User loggedUser)
+        {
+            try
+            {
+                var carList = _carMongoService.GetCars("user", loggedUser.userId);
+
+                Print(carList);
+
+                _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
+                var carNumber = _console.GetResponseFromUser();
+
+                if (carNumber <= carList.Count)
+                {
+                    var updatingCar = carList[carNumber - 1];
+
+                    ReadMongoCar(loggedUser, updatingCar);
+
+                    _carMongoService.UpdateCar(updatingCar);
+
+                    _console.WriteLine("Dane zaktualizowane!");
+                    _console.ReadLine();
+                }
+                else
+                {
+                    _console.WriteLine("Nie znaleziono samochodu!");
+                    _console.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
+        private void UpdateMongoApartment(User loggedUser)
+        {
+            try
+            {
+                var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
+
+                Print(apartmentsList);
+
+                _console.Write("Podaj numer mieszkania które chcesz zaktualizować: ");
+                var apartmentNumber = _console.GetResponseFromUser();
+
+                if (apartmentNumber <= apartmentsList.Count)
+                {
+                    var updatingApartment = apartmentsList[apartmentNumber - 1];
+
+                    ReadMongoApartment(loggedUser, updatingApartment);
+
+                    _apartmentMongoService.UpdateApartment(updatingApartment);
+
+                    _console.WriteLine("Dane zaktualizowane!");
+                    _console.ReadLine();
+                }
+                else
+                {
+                    _console.WriteLine("Nie znaleziono mieszkania!");
+                    _console.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+                _console.WriteLine(e.Message);
+                _console.ReadLine();
+            }
+        }
+
     }
 }

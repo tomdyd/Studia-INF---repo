@@ -30,3 +30,4 @@ D:\Dane\Studia INF - repo\Semestr III\Programowanie - Szematowicz\projectDydaTom
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.dll
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\refint\projectDydaTomasz.Core.dll
 C:\Users\b.ejman\Documents\Studia-INF---repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.pdb
+D:\Dane\Studia INF - repo\Semestr III\Programowanie - Szematowicz\projectDydaTomasz\projectDydaTomaszCore\obj\Debug\net7.0\projectDydaTomasz.Core.sourcelink.json

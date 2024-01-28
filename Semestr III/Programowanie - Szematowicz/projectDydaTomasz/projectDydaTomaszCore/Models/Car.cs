@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using projectDydaTomaszCore.Models;
+using System.Collections;
 
 namespace projectDydaTomasz.Core.Models
 {
@@ -19,5 +20,10 @@ namespace projectDydaTomasz.Core.Models
         public string carProductionYear{ get; set; }
         public string engineCapacity { get; set; }
         public string user{ get; set; }
+
+        public override string ToString()
+        {
+            return $"Marka: {carBrand}, model: {carModel}, rok produkcji: {carProductionYear}, pojemność silnika: {engineCapacity}";
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace interpolacjaNewtona
             {
                 for (int j = i; j < n; j++)
                 {
-                    d[i, j] = (y[j + 1] - y[j]) / (x[j + 1] - x[j]);
+                    d[i, j] = (y[j + 1] - y[j]) / (x[j + 1] - x[j]); // (y1 - y0)/(x1 - x0)
                 }
             }
 
@@ -38,7 +38,7 @@ namespace interpolacjaNewtona
             list.Reverse();
             list.Add(y[0]); //pierwszy węzeł
 
-            for (int i = n - 1; i >= 0; i--)
+            for (int i = 0; i < n; i++)
             {
                 horner[i] = a - x[i];
             }
