@@ -1,5 +1,6 @@
 ﻿using projectDydaTomasz.Core.Interfaces;
 using projectDydaTomasz.Core.Models;
+using projectDydaTomasz.Core.Services;
 using projectDydaTomasz.Interfaces;
 using projectDydaTomaszCore.Models;
 
@@ -143,171 +144,39 @@ namespace projectDydaTomasz
                                                         switch (res)
                                                         {
                                                             case 1:
-                                                                try
-                                                                {
-                                                                    var newCar = new Car()
-                                                                    {
-                                                                        carBrand = _console.GetDataFromUser("Podaj markę samochodu: "),
-                                                                        carModel = _console.GetDataFromUser("Podaj model samochodu: "),
-                                                                        carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: "),
-                                                                        engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: "),
-                                                                        user = loggedUser.userId
-                                                                    };
+                                                                CreateCar(loggedUser, _carSqlService);
 
-                                                                    _carSqlService.CreateCar(newCar);
-                                                                    _console.WriteLine("Dodano do bazy danych!");
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Dodawanie samochodów do bazy sqLite
+                                                                break;
 
                                                             case 2:
-                                                                try
-                                                                {
-                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-                                                                break; // Wczytywanie samochodów użytkownika z bazy sqLite
+                                                                var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
+                                                                PrintList(carList);
+
+                                                                break;
 
                                                             case 3:
-                                                                try
-                                                                {
-                                                                    var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");                                                                   
 
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        if (carList[i].carBrand == searchTerm)
-                                                                        {
-                                                                            _console.WriteLine(
-                                                                                $"{i + 1}." +
-                                                                                $" Marka: {carList[i].carBrand}," +
-                                                                                $" model: {carList[i].carModel}," +
-                                                                                $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                                $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                        }
-                                                                    }
+                                                                carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
+                                                                PrintFilteredCarsList(carList);
 
-                                                                    _console.ReadLine();
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Wczytywanie samochodów użytkownika z bazy sqLite i filtorwanie ich po marce
+                                                                break;
 
                                                             case 4:
-                                                                try
-                                                                {
-                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
 
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
+                                                                carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
+                                                                UpdateCar(loggedUser, carList, _carSqlService);
 
-                                                                    _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
-                                                                    var carNumber = _console.GetResponseFromUser();
-                                                                    carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
-
-                                                                    if (carNumber <= carList.Count)
-                                                                    {
-                                                                        var updatingCar = carList[carNumber - 1];
-
-                                                                        updatingCar.carId = updatingCar.carId;
-                                                                        updatingCar.carBrand = _console.GetDataFromUser("Podaj markę samochodu: ");
-                                                                        updatingCar.carModel = _console.GetDataFromUser("Podaj model samochodu: ");
-                                                                        updatingCar.carProductionYear = _console.GetDataFromUser("Podaj rok produkcji: ");
-                                                                        updatingCar.engineCapacity = _console.GetDataFromUser("Podaj pojemność silnika: ");
-
-                                                                        _carSqlService.UpdateCar(updatingCar);
-
-                                                                        _console.WriteLine("Dane zaktualizowane!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono samochodu!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Aktualizacja samochodów użytkownika w bazie sqLite
+                                                                break;
 
                                                             case 5:
-                                                                try
-                                                                {
-                                                                    var carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
-                                                                    for (int i = 0; i < carList.Count; i++)
-                                                                    {
-                                                                        _console.WriteLine(
-                                                                            $"{i + 1}." +
-                                                                            $" Marka: {carList[i].carBrand}," +
-                                                                            $" model: {carList[i].carModel}," +
-                                                                            $" rok produkcji: {carList[i].carProductionYear}," +
-                                                                            $" pojemność silnika: {carList[i].engineCapacity}");
-                                                                    }
+                                                                carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
+                                                                DeleteCar(carList, _carSqlService);
 
-                                                                    _console.Write("Podaj numer samochodu który chcesz usunąć: ");
-                                                                    var carNumber = _console.GetResponseFromUser();
-                                                                    carList = _carSqlService.GetCars("SELECT * FROM Cars", $"WHERE user = '{loggedUser.userId}'");
-
-                                                                    if (carNumber <= carList.Count)
-                                                                    {
-                                                                        var deletingCar = carList[carNumber - 1];
-
-                                                                        _carSqlService.DeleteCar(deletingCar.carId);
-                                                                        _console.WriteLine("Samochód został usunięty!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        _console.WriteLine("Nie znaleziono samochodu!");
-                                                                        _console.ReadLine();
-                                                                    }
-                                                                }
-                                                                catch (Exception e)
-                                                                {
-                                                                    _console.WriteLine(e.Message);
-                                                                    _console.ReadLine();
-                                                                }
-
-                                                                break; // Usuwanie samochodów użytkownika z bazy sqLite
+                                                                break;
 
                                                             case 6:
                                                                 runCarMenu = false;
-                                                                break; // Powrót
+                                                                break;
 
                                                             default:
                                                                 _console.WriteLine("Nie ma takiej opcji!");
@@ -515,7 +384,7 @@ namespace projectDydaTomasz
                 }
             }
         }
-        public void MongoCarMenu(bool runCarMenu, User loggedUser)
+        private void MongoCarMenu(bool runCarMenu, User loggedUser)
         {
             while (runCarMenu)
             {
@@ -527,31 +396,30 @@ namespace projectDydaTomasz
                 {
                     case 1:
 
-                        CreateMongoCar(loggedUser);
-
+                        CreateCar(loggedUser, _carMongoService);
                         break;
 
                     case 2:
-
-                        PrintMongoCarsList(loggedUser);
+                        var carList = _carMongoService.GetCars("user", loggedUser.userId);
+                        PrintList(carList);
 
                         break;
 
                     case 3:
-
-                        PrintFilteredMongoCarsList(loggedUser);
+                        var dataList = _carMongoService.GetCars("user", loggedUser.userId);
+                        PrintFilteredCarsList(dataList);
 
                         break;
 
                     case 4:
-
-                        UpdateMongoCar(loggedUser);
+                        carList = _carMongoService.GetCars("user", loggedUser.userId);
+                        UpdateCar(loggedUser, carList, _carMongoService);
 
                         break;
 
                     case 5:
-                       
-                        DeleteMongoCar(loggedUser);
+                        carList = _carMongoService.GetCars("user", loggedUser.userId);
+                        DeleteCar(carList, _carMongoService);
 
                         break;
 
@@ -583,8 +451,8 @@ namespace projectDydaTomasz
                         break;
 
                     case 2:
-                       
-                        PrintMongoApartmentsList(loggedUser);
+                        var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
+                        PrintList(apartmentsList);
 
                         break;
 
@@ -659,23 +527,20 @@ namespace projectDydaTomasz
             }
         }
 
-        private void DeleteMongoCar(User loggedUser)
+        private void DeleteCar(List<Car> carList, ICarService carService)
         {
             try
-            {
-                var carList = _carMongoService.GetCars("user", loggedUser.userId);
-
+            {              
                 Print(carList);
 
                 _console.Write("Podaj numer samochodu który chcesz usunąć: ");
                 var carNumber = _console.GetResponseFromUser();
-                //carList = _carMongoService.GetCars("user", loggedUser.userId);
 
                 if (carNumber <= carList.Count)
                 {
                     var deletingCar = carList[carNumber - 1];
 
-                    _carMongoService.DeleteCar(deletingCar.carId);
+                    carService.DeleteCar(deletingCar.carId);
                     _console.WriteLine("Samochód został usunięty!");
                     _console.ReadLine();
                 }
@@ -726,15 +591,15 @@ namespace projectDydaTomasz
             }
         }
 
-        private void CreateMongoCar(User loggedUser)
+        private void CreateCar(User loggedUser, ICarService carService)
         {
             try
             {
                 Car newCar = new Car();
 
-                ReadMongoCar(loggedUser, newCar);
+                ReadCar(loggedUser, newCar);
 
-                _carMongoService.CreateCar(newCar);
+                carService.CreateCar(newCar);
                 _console.ReadLine();
             }
             catch (Exception e)
@@ -763,7 +628,7 @@ namespace projectDydaTomasz
             };
         }
 
-        private Car ReadMongoCar(User loggedUser, Car car)
+        private Car ReadCar(User loggedUser, Car car)
         {
             if(car.carId != null)
             {
@@ -792,13 +657,11 @@ namespace projectDydaTomasz
             return apartment;
         }
 
-        private void PrintMongoCarsList(User loggedUser)
+        private void PrintList<T> (List<T> dataList)
         {
             try
-            {
-                var carList = _carMongoService.GetCars("user", loggedUser.userId);
-
-                Print(carList);
+            {               
+                Print(dataList);
 
                 _console.ReadLine();
             }
@@ -809,29 +672,11 @@ namespace projectDydaTomasz
             }
         }
 
-        private void PrintMongoApartmentsList(User loggedUser)
-        {
-            try
-            {
-                var apartmentsList = _apartmentMongoService.GetApartments("user", loggedUser.userId);
-
-                Print(apartmentsList);
-
-                _console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                _console.WriteLine(e.Message);
-                _console.ReadLine();
-            }
-        }
-
-        private void PrintFilteredMongoCarsList(User loggedUser)
+        private void PrintFilteredCarsList(List<Car> dataList)
         {
             try
             {
                 var searchTerm = _console.GetDataFromUser("Podaj marke szukanego samochodu: ");
-                var dataList = _carMongoService.GetCars("user", loggedUser.userId);
                 List<Car> carList = new List<Car>();
 
                 foreach(var item in dataList)
@@ -853,12 +698,10 @@ namespace projectDydaTomasz
             }
         }
 
-        private void UpdateMongoCar(User loggedUser)
+        private void UpdateCar(User loggedUser, List<Car> carList, ICarService carService)
         {
             try
             {
-                var carList = _carMongoService.GetCars("user", loggedUser.userId);
-
                 Print(carList);
 
                 _console.Write("Podaj numer samochodu który chcesz zaktualizować: ");
@@ -868,9 +711,9 @@ namespace projectDydaTomasz
                 {
                     var updatingCar = carList[carNumber - 1];
 
-                    ReadMongoCar(loggedUser, updatingCar);
+                    ReadCar(loggedUser, updatingCar);
 
-                    _carMongoService.UpdateCar(updatingCar);
+                    carService.UpdateCar(updatingCar);
 
                     _console.WriteLine("Dane zaktualizowane!");
                     _console.ReadLine();
