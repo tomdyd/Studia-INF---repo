@@ -11,7 +11,7 @@ namespace projectDydaTomasz
         public void MainMenu()
         {
             Console.WriteLine("1. Połącz z bazą danych MongoDb");
-            Console.WriteLine("2. Połącz z bazą danych  SQL");
+            Console.WriteLine("2. Połącz z bazą danych SQL");
             Console.WriteLine("3. Wyjdź");
         }
 

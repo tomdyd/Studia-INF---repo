@@ -141,63 +141,8 @@ namespace projectDydaTomasz.Core
 
         public List<T> GetFilteredDataList(string property, string searchingTerm)
         {
-            List<T> dataList = new List<T>();
+            List<T> dataList = new List<T>();          
 
-            //using (var connection = new SQLiteConnection(_connectionString))
-            //{
-            //    connection.Open();
-
-            //    using (var cmd = new SQLiteCommand(connection))
-            //    {
-            //        var query = "SELECT Cars.carId, Cars.carNumber, Cars.carBrand, Cars.carModel," +
-            //            "Cars.carProductionYear, Cars.engineCapacity, Users.userId, Users.username, Users.passwordHash, Users.email FROM Cars " +
-            //              "INNER JOIN Users ON Cars.user = Users.userId " +
-            //              "WHERE carId = @carId";
-
-            //        cmd.CommandText = $"SELECT * FROM Cars INNER JOIN Users ON Cars.user = Users.userId WHERE carId = @carId";
-            //        cmd.Parameters.AddWithValue("carId", searchingTerm);
-
-            //        using (SQLiteDataReader reader = cmd.ExecuteReader())
-            //        {
-            //            if (reader.Read())
-            //            {
-            //                string carId = reader["carId"].ToString();
-            //                string carNumber = reader["carNumber"].ToString();
-            //                string carBrand = reader["carBrand"].ToString();
-            //                string carModel = reader["carModel"].ToString();
-            //                string carProductionYear = reader["carProductionYear"].ToString();
-            //                string engineCapacity = reader["engineCapacity"].ToString();
-            //                string userId = reader["userId"].ToString();
-            //                string username = reader["username"].ToString();
-            //                string passwordHash = reader["passwordHash"].ToString();
-            //                string email = reader["email"].ToString();
-
-            //                var user = new User()
-            //                {
-            //                    userId = userId,
-            //                    username = username,
-            //                    passwordHash = passwordHash,
-            //                    email = email
-            //                };
-
-            //                var newCar = new Car()
-            //                {
-            //                    carId = carId,
-            //                    carNumber = int.Parse(carNumber),
-            //                    carBrand = carBrand,
-            //                    carModel = carModel,
-            //                    carProductionYear = carProductionYear,
-            //                    engineCapacity = engineCapacity,
-            //                    user = user
-            //                };
-
-            //                dataList.Add(newCar);
-            //            }
-            //        }
-            //    }
-            //}
-
-            var dataType = typeof(T).Name;
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
@@ -242,6 +187,7 @@ namespace projectDydaTomasz.Core
 
             return dataList;            
         }
+
         public void UpdateData(string property, string searchTerm, T updatingData)
         {
             var dataType = typeof(T).Name;
