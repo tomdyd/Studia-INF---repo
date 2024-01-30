@@ -12,8 +12,6 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnectionExtended<T>
     private IMongoDatabase _database;
     private string _collectionName;
 
-    private List<T> _users;
-
     public void Connect(string connectionString, string databaseName, string collectionName)
     {
         try
@@ -55,7 +53,6 @@ public class MongoDbDatabaseConnection<T> : IDatabaseConnectionExtended<T>
         {
             var collection = GetCollection(_collectionName);
             collection.InsertOne(input);
-            Console.WriteLine("Dane zostały zapisane w bazie danych.");
         }
         catch (Exception ex)
         {

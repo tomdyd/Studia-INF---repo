@@ -373,8 +373,9 @@ namespace projectDydaTomasz
                 Car newCar = new Car();
 
                 GetCarDataFromUser(loggedUser, newCar);
-
                 carService.CreateCar(newCar);
+                _console.WriteLine("Dane zostały zapisane w bazie danych.");
+
                 _console.ReadLine();
             }
             catch (Exception e)
@@ -393,7 +394,7 @@ namespace projectDydaTomasz
                 GetApartmentDataFromUser(loggedUser, newApartment);
 
                 apartmentService.CreateApartment(newApartment);
-                _console.WriteLine("Dodano do bazy danych!");
+                _console.WriteLine("Dane zostały zapisane w bazie danych.");
                 _console.ReadLine();
             }
             catch (Exception e)

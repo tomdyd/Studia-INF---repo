@@ -11,6 +11,7 @@ using System.Data.SQLite;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace projectDydaTomasz.Core
@@ -75,6 +76,8 @@ namespace projectDydaTomasz.Core
 
         public List<T> GetAllDataList()
         {
+            CheckDatabase();
+
             List<T> dataList = new List<T>();
             var dataname = typeof(T).Name;
 
@@ -108,6 +111,8 @@ namespace projectDydaTomasz.Core
 
         public T GetFilteredData(string property, string searchingTerm)
         {
+            CheckDatabase();
+
             var dataname = typeof(T).Name;
 
             using (var connection = new SQLiteConnection(_connectionString))
@@ -141,6 +146,8 @@ namespace projectDydaTomasz.Core
 
         public List<T> GetFilteredDataList(string property, string searchingTerm)
         {
+            CheckDatabase();
+
             List<T> dataList = new List<T>();          
 
             using (var connection = new SQLiteConnection(_connectionString))
@@ -206,6 +213,57 @@ namespace projectDydaTomasz.Core
                         cmd.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(updatingData));
                     }
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void CheckDatabase()
+        {
+            var path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "\\sqlite.db";
+            if (!File.Exists(path))
+            {
+                SQLiteConnection.CreateFile($"{path}");
+
+
+                using (SQLiteConnection connection = new SQLiteConnection($"Data Source={path};Version=3;"))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand(connection))
+                    {
+                        command.CommandText =
+                                            @"CREATE TABLE Users (
+                                            userId TEXT NOT NULL,
+                                            username TEXT NOT NULL,
+                                            passwordHash TEXT NOT NULL,
+                                            email TEXT NOT NULL,
+                                            PRIMARY KEY(userId)
+                                            );
+
+                                            CREATE TABLE Cars (
+	                                        carId TEXT NOT NULL,
+                                            carBrand TEXT NOT NULL,
+	                                        carModel TEXT NOT NULL,
+	                                        carProductionYear TEXT NOT NULL,
+	                                        engineCapacity	TEXT NOT NULL,
+	                                        user TEXT NOT NULL,
+	                                        FOREIGN KEY(user) REFERENCES Users(userId),
+	                                        PRIMARY KEY(carId)
+                                            );
+
+                                            CREATE TABLE Apartments (
+                                            apartmentId TEXT NOT NULL,
+                                            surface TEXT NOT NULL,
+	                                        cost TEXT NOT NULL,
+	                                        street TEXT NOT NULL,
+	                                        user TEXT NOT NULL,
+	                                        PRIMARY KEY(apartmentId)
+                                            );";
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
                 }
             }
         }
